@@ -1,0 +1,5 @@
+# Configuração das variaveis de ambiente
+
+É onde vamos centralizar todas as nossas variáveis de ambiente e outras configurações que utilizaremos pela aplicação, como: acesso a banco de dados, chave secreta, email, testes e muito mais..
+
+
