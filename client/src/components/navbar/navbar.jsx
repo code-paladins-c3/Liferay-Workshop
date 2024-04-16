@@ -53,7 +53,7 @@ function Navbar () {
             <ul className="nav__menu">
                 <li className="nav__link">
                     <a href="#" className="nav__link">
-                        Home
+                        {/* Home */}
                     </a>
                 </li>
             </ul>

@@ -10,9 +10,11 @@
 }
 html{
     font-size: 62.5%;
+    font-family: Source Sans Pro;
 }
 body{
     font-size: 1.6rem;
+    font-family: Source Sans Pro;
 }
 li{
     list-style: none;
@@ -41,6 +43,7 @@ a{
     border: none;
     background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat scroll 7px 7px;
     padding-left:30px;
+    font-family: Source Sans Pro;
 }
 
 .nav__search-container {
@@ -124,6 +127,7 @@ a{
     width: 100%;
     text-align: center;
     font-size: 18px;
+    font-family: Source Sans Pro;
     padding: 20px 0;
     font-weight: 500;
     font-size: 18px;
@@ -133,6 +137,7 @@ a{
   
   h3 span{
     font-size: 14px;
+    font-family: Source Sans Pro;
     color: var(--secondary-text-color);
     font-weight: 400;
   }
