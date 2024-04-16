@@ -1,6 +1,6 @@
 import React from "react";
 import foto from "./assets/images/background.png"
-
+import logo from "./assets/images/logo.png"
 function Login() {
   return (
     <>
@@ -23,9 +23,13 @@ function Login() {
                 <br/>
                 <input type="password" id="password" name="password" required/>
             </div>
+            <input type="reset" value="Forgot your Password"/>
             <input type="submit" value="Login"/>
       </div>
     </form>
+    <div class="logo" >
+        <img src={logo}alt="" id="logoPosition"/>
+    </div>
 
 
     </>

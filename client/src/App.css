@@ -1,8 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -30,12 +29,13 @@ code {
   margin-top: 40vh;
 }
 .loginForm {
-  width: 300px; /* Largura original do formulário */
-    padding: 20px;
-    border-radius: 5px;
-    position: absolute;
-    right:20vw;
-    top: 40vh;
+  width: 20vw; /* Largura original do formulário */
+  height: 5vh;
+  padding: 20px;
+  border-radius: 5px;
+  position: absolute;
+  right:20vw;
+  top: 40vh;
 }
 input[type="email"],
 input[type="password"] {
@@ -49,8 +49,8 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-  position: relative;
-  left: 7.8vw;
+  position: absolute;
+  left: 10vw;
   width: 50%; /* Isso fará com que o botão de envio ocupe toda a largura do formulário */
   background-color: #0011A8;
   color: white;
@@ -60,3 +60,22 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
+input[type="reset"] {
+  position: relative;
+  left: -1vw;
+  width: 50%; /* Isso fará com que o botão de envio ocupe toda a largura do formulário */
+  background-color: #ffffff;
+  color: #4285F4;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#logoPosition{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 28vw;
+  top:20vh;
+  }
