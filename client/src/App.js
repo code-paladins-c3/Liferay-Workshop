@@ -1,16 +1,16 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Onboarding from './pages/loginPage/Onboarding';
 
-function App() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Onboarding />} />
-                {/* Adicionar rotas para telas de registro e login */}
-            </Routes>
-        </BrowserRouter>
-    );
+import './App.css';
+import React from 'react';  
+import LoginPage from './pages/LoginPage/LoginPage';
+import FirstAccess from 'C:/Users/igorc/Desktop/Liferay/Liferay-Workshop/client/src/pages/FirstAccess/FirstAsccess.js';
+
+function App(props) {
+  return (
+    <div>
+      < FirstAccess/>
+      
+    </div>
+  );
 }
 
 export default App;
