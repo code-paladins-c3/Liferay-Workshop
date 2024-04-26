@@ -1,0 +1,64 @@
+/* body {
+    font-family: 'Source Sans Pro';
+    background: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Define a altura mínima da janela de visualização 
+} */
+
+/* .button {
+    width: 40%; /* Ajusta a largura do botão para 40% da largura da janela 
+    height: 48px;
+    padding: 10px 20px;
+    background: #0011A8;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    gap: 8px;
+    display: flex;
+    font-size: 20px;
+    font-family: Source Sans Pro;
+    margin: 50px auto; /* Adiciona margem automática superior e inferior, e alinha horizontalmente no centro 
+} */
+
+/* .text {
+    color: #26203B;
+    font-size: 32px ;
+    font-family: Source Sans Pro;
+    font-weight: 900;
+    word-wrap: break-word;
+    text-align: center; /* Centraliza o texto 
+    
+} */
+
+/* img {
+    width: 60%; /* Ajusta a largura da imagem para 15% da largura da janela 
+    max-width: 300px; /* Define a largura máxima da imagem *
+    height: auto; /* Mantém a proporção da imagem 
+    margin: 100px auto; /* Adiciona margem em todos os lados 
+    
+} */
+/* .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* select {
+    width: 30vw ; /* Ajusta a largura do select para 40% da largura da janela 
+    margin: 50px auto; /* Adiciona margem automática superior e inferior, e alinha horizontalmente no centro 
+    padding: 20px; /* Aumenta o preenchimento interno 
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 18px; /* Ajusta o tamanho da fonte 
+    font-family: Source Code Pro;
+    color: #333;
+    transition: all 0.3s ease;
+} */
+
+/* select:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+} */
