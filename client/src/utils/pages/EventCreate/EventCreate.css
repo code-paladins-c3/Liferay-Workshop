@@ -28,9 +28,11 @@ body {
 
 
 .form-group {
-    padding-inline-start: 100px;
+    padding-inline-start: 20%;
     padding-bottom: 50px;
     margin-bottom: 10px;
+    
+    
 }
 
 .label {
@@ -40,7 +42,7 @@ body {
 }
 
 .input-field {
-    width: calc(100% - 22px);
+    width: calc(80% - 22px);
     /* Considera o padding */
     padding: 15px;
     font-size: 16px;

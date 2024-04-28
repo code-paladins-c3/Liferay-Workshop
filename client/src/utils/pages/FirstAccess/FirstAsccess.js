@@ -43,7 +43,7 @@ const FirstAccess = () => {
                 <img class="logofirstAsccess" src={logo} alt="" />
             </div>
 
-            <div class="container">
+            <div class="contFirstAsccess">
                 <div class='textTopic' >Quais suas habilidades?</div>
                 <div class="selectFirstAsccess" >
                     <Select

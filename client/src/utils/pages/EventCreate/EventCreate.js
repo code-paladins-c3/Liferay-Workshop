@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import './EventCreate.css';
 
 
+const PhotoPreview = ({ photo }) => {
+    return (
+        <div className="photo-preview">
+            {photo && <img src={photo} alt="Preview" className="preview-image" />}
+        </div>
+    );
+};
+
 const EventCreate = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -12,6 +20,15 @@ const EventCreate = () => {
     const [linkk, setLinkk] = useState('');
     const [maxParticipants, setMaxParticipants] = useState('');
     const [tag, setTag] = useState('');
+    const [showFileInput, setShowFileInput] = useState(true);
+
+    
+
+    const handleCancel = () => {
+        setPhoto('');
+        setShowFileInput(true); // Show file input when canceling the photo
+    };
+
 
     const handleTagChange = (event) => {
         setTag(event.target.value);
@@ -38,7 +55,9 @@ const EventCreate = () => {
     };
 
     const handlePhotoChange = (event) => {
-        setPhoto(event.target.value);
+        const file = event.target.files[0];
+        setPhoto(URL.createObjectURL(file));
+        setShowFileInput(false); // Hide file input after photo is previewed
     };
 
     const handleLinkkChange = (event) => {
@@ -84,11 +103,13 @@ const EventCreate = () => {
 
                 <div className="form-group">
                     <label htmlFor="photo" className="label">Foto</label>
-                    <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} className="input-field" />
+                    {showFileInput && <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} className="input-field" />}
+                    <PhotoPreview photo={photo} />
+                    {photo && <button type="button" onClick={handleCancel} className="cancel-button">Cancelar</button>}
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="linkk" className="label">Link</label>
+                    <label htmlFor="link" className="label">Link</label>
                     <input type="text" id="linkk" value={linkk} onChange={handleLinkkChange} className="input-field" />
                 </div>
 
