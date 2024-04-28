@@ -1,68 +1,71 @@
 import React, { useState } from 'react';
 import logo from './Liferay-Logo-FC-Digital.png';
+import Select from 'react-select';
 import './FirstAsccess.css';
 
-
 const FirstAccess = () => {
-    const [skills, setSkills] = useState('');
-    const [learning, setLearning] = useState('');
+    const [skills, setSkills] = useState([]);
+    const [learning, setLearning] = useState([]);
 
-    const handleSkillsChange = (event) => {
-        setSkills(event.target.value);
+    const handleSkillsChange = (selectedOptions) => {
+        setSkills(selectedOptions);
     };
 
-    const handleLearningChange = (event) => {
-        setLearning(event.target.value);
+    const handleLearningChange = (selectedOptions) => {
+        setLearning(selectedOptions);
     };
+
+    // Options for select components
+    const options = [
+        {
+            label: 'FrontEnd',
+            options: [
+                { value: 'HTML', label: 'HTML' },
+                { value: 'CSS', label: 'CSS' },
+                { value: 'JavaScript', label: 'JavaScript' },
+            ]
+        },
+        {
+            label: 'BackEnd',
+            options: [
+                { value: 'Java', label: 'Java' },
+                { value: 'Node.js', label: 'Node.js' },
+                { value: 'C#', label: 'C#' },
+            ]
+        }
+    ];
+
+    
 
     return (
         <div>
-
-
-            <div class="image">
-                <img src={logo} alt="" />
+            <div class="">
+                <img class="logofirstAsccess" src={logo} alt="" />
             </div>
 
+            <div class="container">
+                <div class='textTopic' >Quais suas habilidades?</div>
+                <div class="selectFirstAsccess" >
+                    <Select
+                        value={skills}
+                        onChange={handleSkillsChange}
+                        options={options}
+                        isMulti
+                    />
+                </div>
 
-            <div class='text' >Quais suas habilidades?</div>
-            <div>
-                <select value={skills} onChange={handleSkillsChange}>
-                    <optgroup label="FrontEnd">
-                        <option value="">Selecione algo para aprender</option>
-                        <option value="TypeScript">HTML</option>
-                        <option value="TypeScript">CSS</option>
-                        <option value="TypeScript">JavaScript</option>
-                    </optgroup>
-                    <optgroup label="BacktEnd">
-                        <option value="GraphQL">Java</option>
-                        <option value="Docker">Node.js</option>
-                        <option value="Docker">C#</option>
-                    </optgroup>
-                </select>
-
+                <div class='textTopic' >O que você quer aprender?</div>
+                <div class="selectFirstAsccess">
+                    <Select
+                        value={learning}
+                        onChange={handleLearningChange}
+                        options={options}
+                        isMulti
+                    />
+                </div>
+                <button type="button" className='button'>Continue</button>
             </div>
-
-            <div class='text' >O que você quer aprender?</div>
-            <div>
-                <select value={learning} onChange={handleLearningChange}>
-                <optgroup label="FrontEnd">
-                        <option value="">Selecione algo para aprender</option>
-                        <option value="TypeScript">HTML</option>
-                        <option value="TypeScript">CSS</option>
-                        <option value="TypeScript">JavaScript</option>
-                    </optgroup>
-                    <optgroup label="BacktEnd">
-                        <option value="GraphQL">Java</option>
-                        <option value="Docker">Node.js</option>
-                        <option value="Docker">C#</option>
-                    </optgroup>
-                </select>
-
-            </div>
-            <button type="button" className='button'>Continue</button>
         </div>
-
-
     );
 };
 
