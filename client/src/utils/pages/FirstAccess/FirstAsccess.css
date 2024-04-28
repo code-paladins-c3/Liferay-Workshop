@@ -1,56 +1,64 @@
-
-
-.container {
-    width: 100%;
-    padding: 100px;
-    border-radius: 67px;
+body {
+    font-family: 'Source Sans Pro';
+    background: #F5F5F5;
     display: flex;
-    flex-direction: column; /* Empilha os itens verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    background: #fff;
-    box-shadow: 0px 0px 20px 0px rgba(221, 15, 15, 0.788);
-}
-
-.textTopic {
-    padding: 20px;
-    font-size: 32px;
-    margin-top: 50px; 
-    margin-bottom: 50px;
-}
-
-.selectFirstAsccess {
-    width: 60% ;
-    padding: 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 0px rgba(150, 150, 150, 0.788);
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-    font-size: large;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Define a altura mínima da janela de visualização */
 }
 
 .button {
-    width: 200px;
-    height: 50px;
-    background-color: #0011A8;
-    color: #FFFFFF;
+    width: 40%; /* Ajusta a largura do botão para 40% da largura da janela */
+    height: 48px;
+    padding: 10px 20px;
+    background: #0011A8;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    gap: 8px;
+    display: flex;
     font-size: 20px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 30px;
-    overflow: hidden;
-    margin: 20px;
+    font-family: Source Sans Pro;
+    margin: 50px auto; /* Adiciona margem automática superior e inferior, e alinha horizontalmente no centro */
 }
 
-.button:hover {
-    background-color: #0025FF;
+.text {
+    color: #26203B;
+    font-size: 32px ;
+    font-family: Source Sans Pro;
+    font-weight: 900;
+    word-wrap: break-word;
+    text-align: center; /* Centraliza o texto */
+    
 }
 
-.logofirstAsccess {
-    max-height: 100px ;
+img {
+    width: 60%; /* Ajusta a largura da imagem para 15% da largura da janela */
+    max-width: 300px; /* Define a largura máxima da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 100px auto; /* Adiciona margem em todos os lados */
     
-    
+}
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+select {
+    width: 30vw ; /* Ajusta a largura do select para 40% da largura da janela */
+    margin: 50px auto; /* Adiciona margem automática superior e inferior, e alinha horizontalmente no centro */
+    padding: 20px; /* Aumenta o preenchimento interno */
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 18px; /* Ajusta o tamanho da fonte */
+    font-family: Source Code Pro;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }

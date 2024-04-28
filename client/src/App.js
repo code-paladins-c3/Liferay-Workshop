@@ -3,12 +3,13 @@ import './App.css';
 
 import React from 'react';  
 import FirstAccess from './utils/pages/FirstAccess/FirstAsccess.js';
-import EventCreate from './utils/pages/EventCreate/EventCreate.js';
-import Login from './utils/pages/login';
+
+import Login from './utils/pages/Login/login';
 
 function App(props) {
   return (
-    <FirstAccess />
+    <Login/>
+
   );
 }
 
