@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar/navbar';
 import Carousel from './components/Carousel/Carousel';
+import EventList from './components/testeCarousel/EventsList';
 
 function App(props) {
 
@@ -14,9 +15,6 @@ function App(props) {
     
   ];
 
-
-
-
   return (
     <><header>
       <div>
@@ -26,7 +24,9 @@ function App(props) {
       </div>
     </header>
     <main>
-    <Carousel images={images} />
+    {/* <Carousel images={images} /> */}
+    <EventList />
+
 
     </main></>
   );

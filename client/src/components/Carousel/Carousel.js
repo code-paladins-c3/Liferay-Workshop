@@ -1,10 +1,9 @@
 import './Carousel.css';
 import React, { useState } from 'react';
 
-
 const Carousel = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const displayCount = 3; // Defina a quantidade de imagens a serem exibidas aqui
+  const displayCount = 5; // Defina a quantidade de imagens a serem exibidas aqui
 
   const nextSlide = () => {
     setActiveIndex((prevIndex) =>
@@ -21,18 +20,24 @@ const Carousel = ({ images }) => {
   return (
     <div className="carousel">
       <button onClick={prevSlide} className="carousel__btn carousel__btn--prev">
-      &lt;
+        &lt;
       </button>
       {images.slice(activeIndex, activeIndex + displayCount).map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Slide ${activeIndex + index}`}
-          className="carousel__img"
-        />
+        <div key={index} className="carousel__item">
+          <img
+            src={image.src}
+            alt={`Slide ${activeIndex + index}`}
+            className="carousel__img"
+          />
+          <div className="carousel__info">
+            <div className="carousel__date">{image.date}</div>
+            <div className="carousel__title">{image.title}</div>
+            <div className="carousel__description">{image.description}</div>
+          </div>
+        </div>
       ))}
       <button onClick={nextSlide} className="carousel__btn carousel__btn--next">
-      &gt;
+        &gt;
       </button>
     </div>
   );

@@ -55,12 +55,15 @@ main {
   }
   
   .carousel__img {
-    width: 20vw; 
-    height: auto; 
+    width: 15vw; 
+    height: 15vw; 
     margin-right: 10px; 
     aspect-ratio: 16/10; ;
+    border: 2px solid rgb(28, 14, 228); /* Adiciona uma borda preta de 2px */
+    border-radius: 10%; /* Adiciona bordas arredondadas à imagem */
     transition: transform 0.3s ease-in-out; 
   }
+
   
   
   .carousel__img:hover {
