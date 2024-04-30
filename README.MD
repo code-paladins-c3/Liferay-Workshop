@@ -1,4 +1,4 @@
-# LifeRay Workshop
+# Liferay Workshop
 
 Welcome to LifeRay Workshop, a web application platform for internal trainings and talks.
 

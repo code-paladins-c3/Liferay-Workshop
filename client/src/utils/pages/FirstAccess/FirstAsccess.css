@@ -1,0 +1,61 @@
+
+
+/* Container */
+.contFirstAsccess {
+    max-width: 600px;
+    width: 100%;
+    padding: 50px;
+    border-radius: 20px; /* Reduced border-radius */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+/* Logo */
+.logofirstAsccess {
+    max-width: 200px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Text Topic */
+.textTopic {
+    padding: 20px;
+    font-size: 32px;
+    margin-top: 20px; /* Reduced margin-top */
+    margin-bottom: 20px;
+}
+
+/* Select Dropdown */
+.selectFirstAsccess {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #f2f2f2; /* Added border for clarity */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: large;
+}
+
+/* Button */
+.button {
+    width: 200px;
+    height: 50px;
+    background-color: #0011A8;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    margin: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0025FF;
+}
