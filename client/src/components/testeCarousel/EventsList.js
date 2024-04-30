@@ -121,7 +121,7 @@ const EventList = () => {
 
   return (
     <><div className="flex items-center">
-      <button onClick={handlePrevSlide} className="carousel__btn carousel__btn--prev">
+      <button onClick={handlePrevSlide} className="coruselBtnPrevious">
         &lt;
       </button>
       <div className="flex overflow-x-scroll space-x-4 p-4" ref={eventListRef}>
@@ -131,7 +131,7 @@ const EventList = () => {
             {...event} />
         ))}
       </div>
-      <button onClick={handleNextSlide} className="carousel__btn carousel__btn--next">
+      <button onClick={handleNextSlide} className="coruselBtnNext">
         &gt;
       </button>
     </div>

@@ -8,21 +8,6 @@
     margin: 0;
     box-sizing: border-box;
 }
-html{
-    font-size: 62.5%;
-    font-family: Source Sans Pro;
-}
-body{
-    font-size: 1.6rem;
-    font-family: Source Sans Pro;
-}
-li{
-    list-style: none;
-}
-a{
-    text-decoration: none;
-    color: darkgray;
-}
 
 .nav{
     display: flex;
@@ -30,7 +15,17 @@ a{
     align-items: center;
     height: 8vh;
     background:  rgb(232, 236, 244);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%
 }
+
+.nav__link{
+  list-style: none;
+}
+
+
 .nav__brand img {
     width: 150px;
 }
@@ -113,6 +108,7 @@ a{
     visibility: visible;
     transform: translateY(0);
     transition: var(--speed) ease;
+   
   }
   
   .dropdown-menu.inactive{
@@ -123,7 +119,7 @@ a{
   }
   
   
-  h3{
+  .menu-trigger{
     width: 100%;
     text-align: center;
     font-size: 18px;
@@ -135,12 +131,7 @@ a{
     line-height: 1.2rem;
   }
   
-  h3 span{
-    font-size: 14px;
-    font-family: Source Sans Pro;
-    color: var(--secondary-text-color);
-    font-weight: 400;
-  }
+
   
   .dropdown-menu ul li{
     padding: 10px  0;
@@ -152,10 +143,7 @@ a{
     cursor: pointer;
   }
   
-  .dropdown-menu ul li:hover img{
-    opacity: 1;
-    cursor: pointer;
-  }
+ 
   
   .dropdownItem{
     display: flex;

@@ -40,7 +40,7 @@ function Navbar () {
             </a>
 
             <div className="nav__search-container">
-           {/* <span className="nav__search-icon">🔍</span> */}
+           
                 <input 
                     type="text"
                     placeholder="Search"
@@ -52,9 +52,9 @@ function Navbar () {
             </div>
             <ul className="nav__menu">
                 <li className="nav__link">
-                    <a href="#" className="nav__link">
-                        {/* Home */}
-                    </a>
+                    
+                       
+                    
                 </li>
             </ul>
             
@@ -65,13 +65,11 @@ function Navbar () {
         </div>
             
             <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
-          <h3>Nome<br/><span>Visitante</span></h3>
+          <h3 className='menu-trigger'>Nome</h3>
           <ul>
-            <DropdownItem img = {user} text = {"Meu Perfil"}/>
-            <DropdownItem img = {edit} text = {"Editar Perfil"}/>
-            <DropdownItem img = {settings} text = {"Configurações"}/>
-            <DropdownItem img = {help} text = {"Ajuda"}/>
-            <DropdownItem img = {logout} text = {"Sair"}/>
+            <DropdownItem  text = {"Meu Perfil"}/>
+            <DropdownItem text = {"Cursos Registrado"}/>
+            <DropdownItem text = {"Sair"}/>
           </ul>
         </div>
         </div>
