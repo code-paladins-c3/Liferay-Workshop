@@ -1,0 +1,72 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para o EventCard */
+  .min-w-max {
+    min-width: max-content;
+  }
+  
+  .rounded-lg {
+    border-radius: 1rem;
+  }
+  
+  .shadow-lg {
+    
+    border: 2px solid #052ee7;
+    margin: 10px;
+  }
+  
+  .rounded-t-lg {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  
+  /* Estilos para o EventList */
+  .flex {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .min-w-max {
+    scroll-snap-align: start;
+  }
+
+  .btn-final {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.btn-final .btn {
+  background-color: #3182ce;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 20px 30px;
+  font-size: 15px;
+  width: 200px;
+  margin: 100px;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-final .btn:hover {
+  background-color: #2b6cb0;
+}
+
+
+
+
+  
+ 
+  
+  /*  teste */
+
+  
+  
+  
