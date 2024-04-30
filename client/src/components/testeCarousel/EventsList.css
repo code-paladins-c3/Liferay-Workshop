@@ -44,21 +44,30 @@ body {
 }
 
 .btn-final .btn {
-  background-color: #3182ce;
-  color: #ffffff;
-  font-weight: 600;
-  padding: 20px 30px;
-  font-size: 15px;
   width: 200px;
-  margin: 100px;
-  border-radius: 9999px;
-  transition: all 0.3s ease-in-out;
+    background-color: #0011A8;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 50px;
+    margin: 50px;
 }
 
 .btn-final .btn:hover {
   background-color: #2b6cb0;
 }
-
+.coruselBtnNext, .coruselBtnPrevious{
+  height: 40px;
+  width: 60px;
+  border-radius: 100px;
+  align-self: center;
+  border: none;
+}
 
 
 
