@@ -21,9 +21,10 @@ function Login() {
         password: password,
       });
 
-      if (error) 
+      if (error) {
         alert("Login nao existe");
         throw error;
+      }
 
 
 
