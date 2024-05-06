@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './EventCreate.css';
+import { useNavigate } from 'react-router-dom';
+import supabase from '../../../config/supabaseClient';
+import NaviBar from '../../../components/navbar/navbar.jsx';
 
 
 const PhotoPreview = ({ photo }) => {
@@ -69,8 +72,13 @@ const EventCreate = () => {
     };
 
     return (
+        
+        <div>
+        <NaviBar />
+
         <div className="container-EventCreate">
            
+            
            
             <div className="texto_criarEvento">
             <h2>Criar Novo Evento</h2>
@@ -127,6 +135,7 @@ const EventCreate = () => {
                     <button type="button" className="button-EventCreate">Criar Evento</button>
                 </div>
             </form>
+        </div>
         </div>
     );
 }
