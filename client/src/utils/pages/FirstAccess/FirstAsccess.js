@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import supabase from '../../../config/supabaseClient'
 import logo from './Liferay-Logo-FC-Digital.png';
 import Select from 'react-select';
 import './FirstAsccess.css';
 
+
 const FirstAccess = () => {
+
+    const [options, setOptions] = useState([]);
     const [skills, setSkills] = useState([]);
     const [learning, setLearning] = useState([]);
+
+    useEffect(() => {
+        fetchOptions();
+    }, []);
 
     const handleSkillsChange = (selectedOptions) => {
         setSkills(selectedOptions);
@@ -15,47 +23,47 @@ const FirstAccess = () => {
         setLearning(selectedOptions);
     };
 
-    // Options for select components
-    const options = [
-        {
-            label: 'FrontEnd',
-            options: [
-                { value: 'HTML', label: 'HTML' },
-                { value: 'CSS', label: 'CSS' },
-                { value: 'JavaScript', label: 'JavaScript' },
-            ]
-        },
-        {
-            label: 'BackEnd',
-            options: [
-                { value: 'Java', label: 'Java' },
-                { value: 'Node.js', label: 'Node.js' },
-                { value: 'C#', label: 'C#' },
-            ]
-        }
-    ];
-
+    async function fetchOptions() {
+        try {
+            const { data, error } = await supabase
+                .from('expertises')
+                .select('tema, expertise');
     
+            if (error) throw error;
+    
+            const groupedOptions = data.reduce((groups, item) => {
+                const group = (groups[item.tema] = groups[item.tema] || { label: item.tema, options: [] });
+                group.options.push({ value: item.tema, label: item.expertise });
+                return groups;
+            }, {});
+          
+    
+            setOptions(Object.values(groupedOptions));
+        } catch (error) {
+            console.error('Error fetching options:', error);
+        }
+    }
+
 
     return (
         <div>
-            <div class="">
-                <img class="logofirstAsccess" src={logo} alt="" />
+            <div className="">
+                <img className="logofirstAsccess" src={logo} alt="" />
             </div>
 
-            <div class="contFirstAsccess">
-                <div class='textTopic' >Quais suas habilidades?</div>
-                <div class="selectFirstAsccess" >
+            <div className="contFirstAsccess">
+                <div className='textTopic' >Quais suas habilidades?</div>
+                <div className="selectFirstAsccess" >
                     <Select
-                        value={skills}
-                        onChange={handleSkillsChange}
-                        options={options}
-                        isMulti
+                       value={skills}
+                       onChange={handleSkillsChange}
+                       options={options}
+                       isMulti
                     />
                 </div>
 
-                <div class='textTopic' >O que você quer aprender?</div>
-                <div class="selectFirstAsccess">
+                <div className='textTopic' >O que você quer aprender?</div>
+                <div className="selectFirstAsccess">
                     <Select
                         value={learning}
                         onChange={handleLearningChange}
@@ -63,7 +71,7 @@ const FirstAccess = () => {
                         isMulti
                     />
                 </div>
-                <button type="button" className='button'>Continue</button>
+                <button type="button" className='button' >Continue</button>
             </div>
         </div>
     );
