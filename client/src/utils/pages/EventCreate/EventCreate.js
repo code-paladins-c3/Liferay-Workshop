@@ -69,62 +69,62 @@ const EventCreate = () => {
     };
 
     return (
-        <div className="container">
+        <div className="container-EventCreate">
            
            
             <div className="texto_criarEvento">
             <h2>Criar Novo Evento</h2>
             </div>
             <form>
-                <div className="form-group">
-                    <label htmlFor="name" className="label">Nome do Evento</label>
-                    <input type="text" id="name" value={name} onChange={handleNameChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="name" className="label-EventCreate">Nome do Evento</label>
+                    <input type="text" id="name" value={name} onChange={handleNameChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="theme" className="label">Tema</label>
-                    <input type="text" id="theme" value={theme} onChange={handleThemeChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="theme" className="label-EventCreate">Tema</label>
+                    <input type="text" id="theme" value={theme} onChange={handleThemeChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="date" className="label">Data</label>
-                    <input type="date" id="date" value={date} onChange={handleDateChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="date" className="label-EventCreate">Data</label>
+                    <input type="date" id="date" value={date} onChange={handleDateChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="time" className="label">Hora</label>
-                    <input type="time" id="time" value={time} onChange={handleTimeChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="time" className="label-EventCreate">Hora</label>
+                    <input type="time" id="time" value={time} onChange={handleTimeChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="tag" className="label">TAG</label>
-                    <input type="text" id="tag" value={tag} onChange={handleTagChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="tag" className="label-EventCreate">TAG</label>
+                    <input type="text" id="tag" value={tag} onChange={handleTagChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="photo" className="label">Foto</label>
-                    {showFileInput && <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} className="input-field" />}
+                <div className="form-group-EventCreate">
+                    <label htmlFor="photo" className="label-EventCreate">Foto</label>
+                    {showFileInput && <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} className="input-photo-EventCreate" />}
                     <PhotoPreview photo={photo} />
                     {photo && <button type="button" onClick={handleCancel} className="cancel-button">Cancelar</button>}
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="link" className="label">Link</label>
-                    <input type="text" id="linkk" value={linkk} onChange={handleLinkkChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="link" className="label-EventCreate">Link</label>
+                    <input type="text" id="likk" value={linkk} onChange={handleLinkkChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="maxParticipants" className="label">Número Máximo de Participantes</label>
-                    <input type="number" id="maxParticipants" value={maxParticipants} onChange={handleMaxParticipantsChange} className="input-field" />
+                <div className="form-group-EventCreate">
+                    <label htmlFor="maxParticipants" className="label-EventCreate">Número Máximo de Participantes</label>
+                    <input type="number" id="maxParticipants" value={maxParticipants} onChange={handleMaxParticipantsChange} className="input-EventCreate" />
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="description" className="label">Descrição</label>
-                    <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-field" rows="4"></textarea>
+                <div className="form-group-EventCreate">
+                    <label htmlFor="description" className="label-EventCreate">Descrição</label>
+                    <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-EventCreate" rows="4"></textarea>
                 </div>
 
                 <div className="button-container">
-                    <button type="button" className="button">Criar Evento</button>
+                    <button type="button" className="button-EventCreate">Criar Evento</button>
                 </div>
             </form>
         </div>

@@ -4,7 +4,7 @@ body {
 
 }
 
-.container {
+.container-EventCreate {
 
     width: 90%;
     padding-right: 100px;
@@ -27,7 +27,7 @@ body {
 }
 
 
-.form-group {
+.form-group-EventCreate {
     padding-inline-start: 20%;
     padding-bottom: 50px;
     margin-bottom: 10px;
@@ -35,13 +35,13 @@ body {
     
 }
 
-.label {
+.label-EventCreate {
     font-size: 16px;
     margin-bottom: 5px;
     display: block;
 }
 
-.input-field {
+.input-EventCreate {
     width: calc(80% - 22px);
     /* Considera o padding */
     padding: 15px;
@@ -83,7 +83,7 @@ textarea:hover {
     /* Alinha o botão à direita */
 }
 
-.button {
+.button-EventCreate {
     width: 200px;
     background-color: #0011A8;
     color: #FFFFFF;
@@ -102,3 +102,38 @@ textarea:hover {
 .button:hover {
     background-color: #0025FF;
 }
+
+
+.cancel-button
+{
+    width: 120px;
+    background-color: #4285f4;
+    color: #FFFFFF;
+    font-size: 8px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 20px;
+    margin: 20px;
+}
+
+.input-photo-EventCreate
+{
+    width: calc(80% - 22px);
+    /* Considera o padding */
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    /* Cor de fundo */
+    transition: background-color 0.3s ease;
+
+}
+
+
+
+
