@@ -23,78 +23,47 @@ const FirstAccess = () => {
         setLearning(selectedOptions);
     };
 
-    // Assuming you have a function to fetch options
     async function fetchOptions() {
-        // Fetch options and handle errors
+        try {
+            const { data, error } = await supabase
+                .from('expertises')
+                .select('tema, expertise');
+    
+            if (error) throw error;
+    
+            const groupedOptions = data.reduce((groups, item) => {
+                const group = (groups[item.tema] = groups[item.tema] || { label: item.tema, options: [] });
+                group.options.push({ value: item.tema, label: item.expertise });
+                return groups;
+            }, {});
+          
+    
+            setOptions(Object.values(groupedOptions));
+        } catch (error) {
+            console.error('Error fetching options:', error);
+        }
     }
 
-    const handleButtonClick = async () => {
-        // Update first_access to false
-        // Add skills and learning to Supabase
-
-        // Replace with actual user's id
-        const userId = 1;
-
-        for (const skill of skills) {
-            const { data: expertiseData, error: expertiseError } = await supabase
-                .from('expertises')
-                .select('id')
-                .eq('expertise', skill.value);
-
-            if (expertiseError || !expertiseData || !expertiseData.length) {
-                console.error('Error fetching expertise:', expertiseError);
-                continue;
-            }
-
-            const { error } = await supabase
-                .from('user_expertises')
-                .insert({ user_id: userId, expertise_id: expertiseData[0].id });
-
-            if (error) {
-                console.error('Error adding expertise:', error);
-            }
-        }
-
-        for (const learningItem of learning) {
-            const { data: expertiseData, error: expertiseError } = await supabase
-                .from('expertises')
-                .select('id')
-                .eq('expertise', learningItem.value);
-
-            if (expertiseError || !expertiseData || !expertiseData.length) {
-                console.error('Error fetching expertise:', expertiseError);
-                continue;
-            }
-
-            const { error } = await supabase
-                .from('user_learning')
-                .insert({ user_id: userId, expertise_id: expertiseData[0].id });
-
-            if (error) {
-                console.error('Error adding learning:', error);
-            }
-        }
-    };
 
     return (
         <div>
-            <div class="">
-                <img class="logofirstAsccess" src={logo} alt="" />
+            <div className="">
+                <img className="logofirstAsccess" src={logo} alt="" />
             </div>
 
-            <div class="contFirstAsccess">
-                <div class='textTopic' >Quais suas habilidades?</div>
-                <div class="selectFirstAsccess" >
+            <div className="contFirstAsccess">
+                <div className='textTopic' >Quais suas habilidades?</div>
+                <div className="selectFirstAsccess" >
                     <Select
-                        value={skills}
-                        onChange={handleSkillsChange}
-                        options={options}
-                        isMulti
+                       value={skills}
+                       onChange={handleSkillsChange}
+                       options={options}
+                       isMulti
                     />
                 </div>
 
-                <div class='textTopic' >O que você quer aprender?</div>
-                <div class="selectFirstAsccess">
+                <div className='textTopic' >O que você quer aprender?</div>
+                <div className="selectFirstAsccess">
                     <Select
                         value={learning}
                         onChange={handleLearningChange}
@@ -102,7 +71,7 @@ const FirstAccess = () => {
                         isMulti
                     />
                 </div>
-                <button type="button" className='button' onClick={handleButtonClick}>Continue</button>
+                <button type="button" className='button' >Continue</button>
             </div>
         </div>
     );
