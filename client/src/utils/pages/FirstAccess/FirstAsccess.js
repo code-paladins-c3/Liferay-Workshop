@@ -23,6 +23,33 @@ const FirstAccess = () => {
         setLearning(selectedOptions);
     };
 
+    async function handleButtonClick() {
+        try {
+            // Get the IDs of the selected skills and learning
+            const skillIds = skills.map(skill => skill.value);
+            const learningIds = learning.map(learning => learning.value);
+    
+            // Create the relations in the user_expertise table
+            for (const skillId of skillIds) {
+                await supabase
+                    .from('user_expertises')
+                    .insert([{ user_id: userId, expertise_id: skillId }]);
+            }
+    
+            // Create the relations in the user_learning table
+            for (const learningId of learningIds) {
+                await supabase
+                    .from('user_learning')
+                    .insert([{ user_id: userId, expertise_id: learningId }]);
+            }
+    
+            // Navigate to the next page
+            // ...
+        } catch (error) {
+            console.error('Error creating relations:', error);
+        }
+    }
+
     async function fetchOptions() {
         try {
             const { data, error } = await supabase
@@ -71,7 +98,7 @@ const FirstAccess = () => {
                         isMulti
                     />
                 </div>
-                <button type="button" className='button' >Continue</button>
+                <button type="button" className='button' onClick={handleButtonClick}>Continue</button>
             </div>
         </div>
     );
