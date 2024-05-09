@@ -26,14 +26,14 @@ const FirstAccess = () => {
     async function fetchOptions() {
         try {
             const { data, error } = await supabase
-                .from('expertises')
-                .select('tema, expertise');
+                .from('skills')
+                .select('tema, skill');
     
             if (error) throw error;
     
             const groupedOptions = data.reduce((groups, item) => {
                 const group = (groups[item.tema] = groups[item.tema] || { label: item.tema, options: [] });
-                group.options.push({ value: item.tema, label: item.expertise });
+                group.options.push({ value: item.tema, label: item.skill });
                 return groups;
             }, {});
           
