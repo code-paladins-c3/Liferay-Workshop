@@ -25,7 +25,7 @@ const FirstAccess = () => {
 
     async function fetchOptions() {
         try {
-            
+
             const { data, error } = await supabase
                 .from('skills')
                 .select('tema, skill');
@@ -37,9 +37,7 @@ const FirstAccess = () => {
                 group.options.push({ value: item.tema, label: item.skill });
                 return groups;
             }, {});
-
-
-          
+                      
     
             setOptions(Object.values(groupedOptions));
         } catch (error) {
