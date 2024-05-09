@@ -1,0 +1,89 @@
+/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para o EventCard */
+  .min-w-max {
+    min-width: max-content;
+  }
+  
+  .rounded-lg {
+    border-radius: 1rem;
+  }
+  
+  .shadow-lg {
+    
+    border: 2px solid #052ee7;
+    margin: 10px;
+  }
+  
+  .rounded-t-lg {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  
+  /* Estilos para o EventList */
+  .flex {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .min-w-max {
+    scroll-snap-align: start;
+}
+
+
+.coruselBtnNext, .coruselBtnPrevious{
+  height: 40px;
+  width: 60px;
+  border-radius: 100px;
+  align-self: center;
+  border: none;
+}
+
+/* css do filter */  
+.filter-AllEvents {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    
+}
+
+.filter-AllEvents-modified {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+    
+}
+
+.filter-AllEvents-modified select {
+    max-width: 200px;
+    margin-left: 10px;
+    
+}
+
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.EventCard-modified {
+    flex: 0 0 9%;
+  margin: 5px;
+}
+
+@media (max-width: 800px) {
+    .EventCard-modified {
+        flex: 1 0 50%;
+    }
+}
