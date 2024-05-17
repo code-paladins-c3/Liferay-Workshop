@@ -6,6 +6,7 @@ import FirstAccess from './utils/pages/FirstAccess/FirstAsccess.js';
 import EventCreate from './utils/pages/EventCreate/EventCreate.js';
 import AllEvents from './utils/pages/EventPageAll/AllEvents.js';
 import Login from './utils/pages/Login/login.js';
+import Profile from './utils/pages/profile/profile.js';
 
 
 
@@ -19,6 +20,7 @@ function App(props) {
           <Route path="/firstaccess" element={<FirstAccess />} />
           <Route path="/eventcreate" element={<EventCreate />} />
           <Route path="/allevents" element={<AllEvents />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>
