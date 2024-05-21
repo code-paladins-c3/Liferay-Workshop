@@ -74,5 +74,21 @@ body {
   
   /*  teste */
 
+  .filter-by-tag {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Right align elements */
+  }
   
+  /* .filter-by-tag {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  }
+  
+   */
   

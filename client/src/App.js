@@ -20,7 +20,7 @@ function App(props) {
           <Route path="/firstaccess" element={<FirstAccess />} />
           <Route path="/eventcreate" element={<EventCreate />} />
           <Route path="/allevents" element={<AllEvents />} />
-          <Route path="/main" element={<Main />} />
+          <Route path="/Main" element={<Main />} />
         </Routes>
       </div>
     </Router>

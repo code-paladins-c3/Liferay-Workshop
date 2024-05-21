@@ -3,6 +3,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import './EventsList.css';
+import Select from 'react-select';
 
 const eventCardClasses = "min-w-max rounded-lg shadow-lg";
 const imageClasses = "rounded-t-lg";
@@ -119,27 +120,60 @@ const EventList = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [currentIndex]); 
 
+
+  const tags = [
+    { value: 'all', label: 'Todos' }, 
+    { value: 'tag 1', label: 'JAVA' },
+    { value: 'Tag 2', label: 'PYTHON' },
+    { value: 'Tag 3', label: 'SQL' },
+    { value: 'Tag 4', label: 'NODEJS' },
+   
+  ];
+
+
+  const [selectedTag, setSelectedTag] = useState('');
+
+
+  const handleTagChange = (event) => {
+    const selectedTagValue = event.target.value;
+    setSelectedTag(selectedTagValue);
+  };
+
+
+
+
   return (
-    <><div className="flex items-center">
-      <button onClick={handlePrevSlide} className="coruselBtnPrevious">
-        &lt;
-      </button>
-      <div className="flex overflow-x-scroll space-x-4 p-4" ref={eventListRef}>
-        {events.map((event, index) => (
-          <EventCard
-            key={index}
-            {...event} />
-        ))}
+    <div>
+      
+        <div className="filter-by-tag">
+        <span className='name-tag'>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
+          <Select value={selectedTag} onChange={handleTagChange} options={tags} />
+        </div>
+      
+
+      <div className="flex items-center">
+        <button onClick={handlePrevSlide} className="coruselBtnPrevious">
+          &lt;
+        </button>
+
+        <div className="flex overflow-x-scroll space-x-4 p-4" ref={eventListRef}>
+          {events.map((event, index) => (
+            <EventCard key={index} {...event} />
+          ))}
+        </div>
+
+        <button onClick={handleNextSlide} className="coruselBtnNext">
+          &gt;
+        </button>
       </div>
-      <button onClick={handleNextSlide} className="coruselBtnNext">
-        &gt;
-      </button>
-    </div>
-    <div className="btn-final">
+
+      <div className="btn-final">
         <button className="btn btn-primary mr-2">Criar Eventos</button>
         <button className="btn btn-outline-primary">Todos os Eventos</button>
-      </div></>
+      </div>
+    </div>
   );
 };
 
-export default EventList;
+
+export default EventList; 
