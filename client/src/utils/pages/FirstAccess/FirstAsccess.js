@@ -15,6 +15,22 @@ const FirstAccess = () => {
   const session = useContext(SessionContext);
   const navigate = useNavigate();
 
+
+  const updateFirstAccess = async () => {
+    try {
+      const { user } = await supabase.auth.user();
+
+      if (user) {
+        await supabase
+          .from("profile")
+          .update({ First_Access: false })
+          .eq("id", user.id);
+      }
+    } catch (error) {
+      console.error("Error updating First_Access:", error);
+    }
+  };
+
   useEffect(() => {
     if (session) {
       fetchOptions();
@@ -69,6 +85,8 @@ const FirstAccess = () => {
         .insert([...skillsData, ...learningData]);
 
       if (skillsError) throw skillsError;
+
+      await updateFirstAccess();
 
       setSuccess("Dados salvos com sucesso!");
       navigate('/eventcreate');
