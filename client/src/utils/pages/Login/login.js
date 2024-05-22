@@ -67,7 +67,7 @@ function Login() {
       if (userProfile && userProfile.First_Access) {
         navigate('/firstaccess');
       } else {
-        navigate('/eventcreate');
+        navigate('/mainevents');
       }
     } catch (error) {
       console.error(error);

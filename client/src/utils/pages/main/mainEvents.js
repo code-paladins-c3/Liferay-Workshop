@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../../components/navbar/navbar';
 import EventsList from '../../../components/testeCarousel/EventsList';
 
-function main() {
+function mainEvents() {
     return (
        <>
        <Navbar/>
@@ -11,4 +11,4 @@ function main() {
     );
 }
 
-export default main;
+export default mainEvents;

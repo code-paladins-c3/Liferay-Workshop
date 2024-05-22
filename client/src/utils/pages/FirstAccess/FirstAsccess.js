@@ -89,7 +89,7 @@ const FirstAccess = () => {
       await updateFirstAccess();
 
       setSuccess("Dados salvos com sucesso!");
-      navigate('/eventcreate');
+      navigate('/mainevents');
     } catch (error) {
       setError("Erro ao salvar os dados. Tente novamente.");
       console.error("Error updating user skills:", error);
