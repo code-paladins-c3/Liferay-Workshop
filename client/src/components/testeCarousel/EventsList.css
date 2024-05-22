@@ -1,6 +1,7 @@
 /* Estilos globais */
 body {
     font-family: Arial, sans-serif;
+    background-color: #fff;
   }
   
   /* Estilos para o EventCard */
@@ -46,7 +47,7 @@ body {
 .btn-final .btn {
   width: 200px;
     background-color: #0011A8;
-    color: #FFFFFF;
+    color: #fff;
     font-size: 20px;
     font-weight: bold;
     border: none;
@@ -69,13 +70,25 @@ body {
   border: none;
 }
 
-
-
-  
  
   
   /*  teste */
 
+  .filter-by-tag {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Right align elements */
+  }
   
+  /* .filter-by-tag {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  }
   
+   */
   

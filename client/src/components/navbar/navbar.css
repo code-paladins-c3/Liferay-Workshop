@@ -14,7 +14,7 @@
     justify-content: space-around;
     align-items: center;
     height: 8vh;
-    background:  rgb(232, 236, 244);
+    background:  rgb(255, 255, 255);
     position: fixed;
     top: 0;
     left: 0;
@@ -27,7 +27,8 @@
 
 
 .nav__brand img {
-    width: 150px;
+    width: 230px;
+    
 }
 
 .nav__search {
@@ -61,7 +62,7 @@
     width: 2.5rem;
     height: 0.2rem;
     margin: 0.3rem;
-    background: darkgray;
+    background: rgb(243, 239, 239);
 }  
 .nav__toggler{
     cursor: pointer;
