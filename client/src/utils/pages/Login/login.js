@@ -12,12 +12,39 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const checkUserProfile = async () => {
+      const { data: { user }, error } = await supabase.auth.getUser();
+
+      if (user) {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("id")
+          .eq("id", user.id);
+
+        if (error) {
+          console.error("Error checking user profile:", error);
+          return;
+        }
+
+        // If user profile doesn't exist, create one
+        if (!data || data.length === 0) {
+          await supabase.from("profiles").insert([
+            { id: user.id, First_Access: true },
+          ]);
+        }
+      }
+    };
+
+    checkUserProfile();
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
     try {
-      const { data: users, error } = await supabase.auth.signInWithPassword({
+      const { data: { user }, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -27,17 +54,17 @@ function Login() {
         throw error;
       }
 
-      const { data: userPublic, error: dataError } = await supabase
-        .from('users')
-        .select('id_user, first_access')
-        .eq('id_user', users.user.id)
+      const { data: userProfile, error: profileError } = await supabase
+        .from('profiles')
+        .select('id, First_Access')
+        .eq('id', user.id)
         .single();
 
-      if (dataError) {
-        throw dataError;
+      if (profileError) {
+        throw profileError;
       }
 
-      if (userPublic && userPublic.first_access) {
+      if (userProfile && userProfile.First_Access) {
         navigate('/firstaccess');
       } else {
         navigate('/eventcreate');
@@ -49,6 +76,8 @@ function Login() {
       setLoading(false);
     }
   };
+
+  
 
   return (
     <form onSubmit={handleSubmit}>
