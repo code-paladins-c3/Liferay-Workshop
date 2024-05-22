@@ -1,48 +1,23 @@
-// src/utils/pages/Login/Login.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../../config/supabaseClient";
 import foto from "./assets/images/background.png";
 import logo from "./assets/images/logo.png";
 
-const Login = () => {
+const SessionContext = createContext(null);
+
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkUserProfile = async () => {
-      const user = supabase.auth.user();
-
-      if (user) {
-        const { data, error } = await supabase
-          .from("public.profiles")
-          .select("id")
-          .eq("uuid", user.id);
-
-        if (error) {
-          console.error("Error checking user profile:", error);
-          return;
-        }
-
-        if (!data || data.length === 0) {
-          await supabase.from("public.profiles").insert([
-            { uuid: user.id, First_Access: true },
-          ]);
-        }
-      }
-    };
-
-    checkUserProfile();
-  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
     try {
-      const { user, error } = await supabase.auth.signIn({
+      const { data: users, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -52,18 +27,33 @@ const Login = () => {
         throw error;
       }
 
-      navigate(user ? "/firstaccess" : "/eventcreate");
-    } catch (error) {
-      console.error("Error signing in:", error);
-    }
+      const { data: userPublic, error: dataError } = await supabase
+        .from('users')
+        .select('id_user, first_access')
+        .eq('id_user', users.user.id)
+        .single();
 
-    setLoading(false);
+      if (dataError) {
+        throw dataError;
+      }
+
+      if (userPublic && userPublic.first_access) {
+        navigate('/firstaccess');
+      } else {
+        navigate('/eventcreate');
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="welcomeBoard desktop-only">
-        <img src={foto} alt="" id="backgroundWelcome" />
+        <img src={foto} alt="background" id="backgroundWelcome" />
       </div>
       <div className="welcomePhrase desktop-only">
         <h1>Welcome to <span>Liferay</span></h1>
@@ -82,7 +72,7 @@ const Login = () => {
         </div>
 
         <div className="labelForm">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password</label>
           <br />
           <input
             type="password"
@@ -94,14 +84,14 @@ const Login = () => {
         </div>
         <input className="Forgot" type="reset" value="Forgot your Password" />
         <button type="submit" className="buttonLogin" disabled={loading}>
-          {loading ? "Loading..." : "Login"}
+          {loading ? 'Loading...' : 'Login'}
         </button>
       </div>
       <div className="logo">
-        <img src={logo} alt="" id="logoPosition" />
+        <img src={logo} alt="logo" id="logoPosition" />
       </div>
     </form>
   );
-};
+}
 
 export default Login;
