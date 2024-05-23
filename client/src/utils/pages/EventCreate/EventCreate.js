@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import supabase from '../../../config/supabaseClient';
 import NaviBar from '../../../components/navbar/navbar.jsx';
-
+import SessionContext from '../../../api/context/SessionContext';
 
 const PhotoPreview = ({ photo }) => {
     return (
@@ -14,50 +14,55 @@ const PhotoPreview = ({ photo }) => {
 };
 
 const EventCreate = () => {
-
-    const location = useLocation();
+    const { user } = useContext(SessionContext);
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [skill, setSkill] = useState('');
+    const [selectedSkill, setSelectedSkill] = useState(null);
+    const [skills, setSkills] = useState([]);
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [photo, setPhoto] = useState('');
     const [linkk, setLinkk] = useState('');
     const [maxParticipants, setMaxParticipants] = useState('');
     const [tag, setTag] = useState('');
-    const [showFileInput, setShowFileInput] = useState(true);
-    const userId = location.state.userId;
-    const skillId = userId;
-    const [skills, setSkills] = useState([]);
+    const [photoFile, setPhotoFile] = useState(null);
 
+    useEffect(() => {
+        if (!user) {
+            navigate('/login');
+        } else {
+            fetchSkills();
+        }
+    }, [user, navigate]);
 
-    async function fetchSkill() {
+    const fetchSkills = async () => {
         try {
             const { data, error } = await supabase
                 .from('skills')
-                .select('tema, skill');
-    
+                .select('id_skill, tema, skill');
+
             if (error) throw error;
 
-            const groupedSkills = data.reduce((groups, item) => {
-                const group = (groups[item.tema] = groups[item.tema] || { label: item.tema, Skills: [] });
-                group.Skills.push({ value: item.tema, label: item.expertise });
-                return groups;
-            }, {});
-          
-    
-            setSkill(Object.values(groupedSkills));
+            const groupedSkills = data.map(item => ({
+                value: item.id_skill,
+                label: `${item.tema} - ${item.skill}`
+            }));
+
+            setSkills(groupedSkills);
         } catch (error) {
-            console.error('Error fetching Skill:', error);
+            console.error('Error fetching Skills:', error);
         }
     };
-    
-   
-    
+
+    const handleSkillChange = (selectedOption) => {
+        setSelectedSkill(selectedOption);
+    };
+
     const handleLinkkChange = (event) => {
         setLinkk(event.target.value);
     };
-    
+
     const handleTagChange = (event) => {
         setTag(event.target.value);
     };
@@ -70,10 +75,6 @@ const EventCreate = () => {
         setDescription(event.target.value);
     };
 
-    const handleSkillsChange = (selectedSkill) => {
-        setSkill(selectedSkill);
-    };
-
     const handleDateChange = (event) => {
         setDate(event.target.value);
     };
@@ -84,127 +85,125 @@ const EventCreate = () => {
 
     const handleCancel = () => {
         setPhoto('');
-        setShowFileInput(true); // Show file input when canceling the photo
+        setPhotoFile(null);
     };
 
     const handleMaxParticipantsChange = (event) => {
         setMaxParticipants(event.target.value);
     };
 
+    const handlePhotoChange = (event) => {
+        // const file = event.target.files[0];
+        // setPhotoFile(file);
+        // setPhoto(URL.createObjectURL(file));
+    };
+
+    // const uploadPhotoToStorage = async () => {
+    //     if (photoFile) {
+    //         const fileName = `${Date.now()}_${photoFile.name}`;
+    //         const { data, error } = await supabase
+    //             .storage
+    //             .from('EventsPhotos')
+    //             .upload(fileName, photoFile);
+
+    //         if (error) throw error;
+    //         const photoURL = supabase
+    //             .storage
+    //             .from('EventsPhotos')
+    //             .getPublicUrl(fileName).data.publicUrl;
+    //         return photoURL;
+    //     }
+    //     return '';
+    // };
 
     const handleEventCreate = async () => {
-        const event = {
-            name: name,
-            description: description,
-            skill: skill,
-            date: date,
-            time: time,
-            photo: photo,
-            linkk: linkk,
-            maxParticipants: maxParticipants,
-            tag: tag,
-            userId: userId, // assumindo que você tem o userId do usuário atual
-            skillId: skillId // assumindo que você tem o skillId do evento
-        };
-    
-        const { data, error } = await supabase
-            .from('Event')
-            .insert([event]);
-    
-        if (error) {
-            console.log('Erro ao criar evento:', error);
-        } else {
+        try {
+            // const photoURL = await uploadPhotoToStorage();
+
+            const event = {
+                name,
+                description,
+                theme: selectedSkill.label,
+                date,
+                time,
+                photo: "photoURL",
+                linkk,
+                maxparticipants: parseInt(maxParticipants, 10),
+                tag,
+                userid: user.id,
+                skillid: selectedSkill.value
+            };
+
+            const { data, error } = await supabase.from('event').insert([event]);
+            if (error) throw error;
+
             console.log('Evento criado com sucesso:', data);
+            navigate('/mainevents');  // Redirect to a list of events or any other appropriate page
+        } catch (error) {
+            console.error('Erro ao criar evento:', error);
         }
     };
 
-    const handlePhotoChange = (event) => {
-        const file = event.target.files[0];
-        setPhoto(URL.createObjectURL(file));
-        setShowFileInput(false); // Hide file input after photo is previewed
-    };
-
-    
-
     return (
-        
         <div>
-
             <div className="NaviBar">
-            <NaviBar />
+                <NaviBar />
             </div>
-        
-
-        <div className="container-EventCreate">
-           
-            
-           
-            <div className="texto_criarEvento">
-            <h2>Criar Novo Evento</h2>
+            <div className="container-EventCreate">
+                <div className="texto_criarEvento">
+                    <h2>Criar Novo Evento</h2>
+                </div>
+                <form>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="name" className="label-EventCreate">Nome do Evento</label>
+                        <input type="text" id="name" value={name} onChange={handleNameChange} className="input-EventCreate" />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="skill" className="label-EventCreate">Tema</label>
+                        <Select
+                            value={selectedSkill}
+                            onChange={handleSkillChange}
+                            options={skills}
+                            className="selectSkillEventCreate"
+                        />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="date" className="label-EventCreate">Data</label>
+                        <input type="date" id="date" value={date} onChange={handleDateChange} className="input-EventCreate" />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="time" className="label-EventCreate">Hora</label>
+                        <input type="time" id="time" value={time} onChange={handleTimeChange} className="input-EventCreate" />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="tag" className="label-EventCreate">TAG</label>
+                        <input type="text" id="tag" value={tag} onChange={handleTagChange} className="input-EventCreate" />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="photo" className="label-EventCreate">Foto</label>
+                        <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} className="input-photo-EventCreate" />
+                        <PhotoPreview photo={photo} />
+                        {photo && <button type="button" onClick={handleCancel} className="cancel-button">Cancelar</button>}
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="link" className="label-EventCreate">Link</label>
+                        <input type="text" id="likk" value={linkk} onChange={handleLinkkChange} className="input-EventCreate" />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="maxParticipants" className="label-EventCreate">Número Máximo de Participantes</label>
+                        <input type="number" id="maxParticipants" value={maxParticipants} onChange={handleMaxParticipantsChange} className="input-EventCreate" />
+                    </div>
+                    <div className="form-group-EventCreate">
+                        <label htmlFor="description" className="label-EventCreate">Descrição</label>
+                        <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-EventCreate" rows="4"></textarea>
+                    </div>
+                    <div className="button-container">
+                        <button id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
+                    </div>
+                </form>
             </div>
-            <form>
-                <div className="form-group-EventCreate">
-                    <label htmlFor="name" className="label-EventCreate">Nome do Evento</label>
-                    <input type="text" id="name" value={name} onChange={handleNameChange} className="input-EventCreate" />
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="skill" className="label-EventCreate">Tema</label>
-                    <div className="selectSkillEventCreate" >
-                    <Select
-                       value={skills}
-                       onChange={handleSkillsChange}
-                       Skill={skill}
-                    />
-                </div>
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="date" className="label-EventCreate">Data</label>
-                    <input type="date" id="date" value={date} onChange={handleDateChange} className="input-EventCreate" />
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="time" className="label-EventCreate">Hora</label>
-                    <input type="time" id="time" value={time} onChange={handleTimeChange} className="input-EventCreate" />
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="tag" className="label-EventCreate">TAG</label>
-                    <input type="text" id="tag" value={tag} onChange={handleTagChange} className="input-EventCreate" />
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="photo" className="label-EventCreate">Foto</label>
-                    {showFileInput && <input type="file" id="photo" accept="image/*" onChange={handlePhotoChange} className="input-photo-EventCreate" />}
-                    <PhotoPreview photo={photo} />
-                    {photo && <button type="button" onClick={handleCancel} className="cancel-button">Cancelar</button>}
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="link" className="label-EventCreate">Link</label>
-                    <input type="text" id="likk" value={linkk} onChange={handleLinkkChange} className="input-EventCreate" />
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="maxParticipants" className="label-EventCreate">Número Máximo de Participantes</label>
-                    <input type="number" id="maxParticipants" value={maxParticipants} onChange={handleMaxParticipantsChange} className="input-EventCreate" />
-                </div>
-
-                <div className="form-group-EventCreate">
-                    <label htmlFor="description" className="label-EventCreate">Descrição</label>
-                    <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-EventCreate" rows="4"></textarea>
-                </div>
-
-                <div className="button-container">
-                <button id="button-EventCreate" onClick={handleEventCreate}>Criar Evento</button>
-                </div>
-            </form>
-        </div>
         </div>
     );
 }
 
 export default EventCreate;
-
-// Path: client/src/utils/pages/FirstAccess/FirstAccess.js
