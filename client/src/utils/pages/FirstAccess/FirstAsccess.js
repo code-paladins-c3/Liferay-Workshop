@@ -1,4 +1,3 @@
-// src/utils/pages/FirstAccess/FirstAccess.js
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../../config/supabaseClient";
@@ -15,16 +14,20 @@ const FirstAccess = () => {
   const session = useContext(SessionContext);
   const navigate = useNavigate();
 
-
   const updateFirstAccess = async () => {
     try {
-      const { user } = await supabase.auth.user();
+      const user = session.user;
+      if (!user) {
+        throw new Error("Usuário não encontrado na sessão");
+      }
 
-      if (user) {
-        await supabase
-          .from("profile")
-          .update({ First_Access: false })
-          .eq("id", user.id);
+      const { error } = await supabase
+        .from("profiles")
+        .update({ First_Access: false })
+        .eq("id", user.id);
+
+      if (error) {
+        throw error;
       }
     } catch (error) {
       console.error("Error updating First_Access:", error);
@@ -53,11 +56,9 @@ const FirstAccess = () => {
         return groups;
       }, {}));
 
-
       setOptions(groupedOptions);
     } catch (error) {
       console.error("Error fetching options:", error);
-
     }
   };
 
