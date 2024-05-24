@@ -30,7 +30,7 @@
     border-radius: 10px;
     width: 45vw;
 }
-.boxForm > input,[type="email"],[type="text"]{
+.boxForm input,[type="email"], .boxForm[type="text"]{
     background-color: #d9d9d9;
     width: 100%;
     padding: 10px;
@@ -40,7 +40,7 @@
     border-radius: 12px;
     box-sizing: border-box;
 }
-.boxForm> button, [type="submit"]{
+.boxForm button, [type="submit"]{
     position: relative;
     left: 80%;
     width: 20%;
