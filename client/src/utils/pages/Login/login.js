@@ -89,7 +89,7 @@ function Login() {
       </div>
       <div className="loginForm">
         <div className="labelForm">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" id="login">Email</label>
           <br />
           <input
             type="email"
@@ -111,10 +111,15 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input className="Forgot" type="reset" value="Forgot your Password" />
-        <button type="submit" className="buttonLogin" disabled={loading}>
-          {loading ? 'Loading...' : 'Login'}
-        </button>
+        <div className="buttonPlace">
+        
+          <input className="Forgot" type="reset" value="Forgot your Password" />
+          <button type="submit" className="buttonLogin" disabled={loading}>
+            {loading ? 'Loading...' : 'Login'}
+          </button>
+
+        </div>
+        
       </div>
       <div className="logo">
         <img src={logo} alt="logo" id="logoPosition" />
