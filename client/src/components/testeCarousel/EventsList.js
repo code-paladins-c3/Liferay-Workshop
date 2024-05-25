@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './EventsList.css';
 import Select from 'react-select';
 import supabase from '../../config/supabaseClient';
-// import SessionContext from '../../api/context/SessionContext';
+import SessionContext from '../../api/context/SessionContext';
 
 const eventCardClasses = "min-w-max rounded-lg shadow-lg";
 const imageClasses = "rounded-t-lg";
@@ -36,7 +36,7 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
 };
 
 const EventList = () => {
-  // const { user } = useContext(SessionContext);
+  const { user } = useContext(SessionContext);
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [events, setEvents] = useState([]);
@@ -45,11 +45,11 @@ const EventList = () => {
   const [tags, setTags] = useState([]);
   const eventListRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate('/login');
-  //   }
-  // }, [user, navigate]);
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   const fetchEvents = async () => {
     try {
