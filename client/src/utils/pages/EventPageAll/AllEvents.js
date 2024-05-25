@@ -1,197 +1,146 @@
-import { useEffect, useRef, useState } from 'react';
-import supabase from '../../../config/supabaseClient'
+import React, { useEffect, useRef, useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import supabase from '../../../config/supabaseClient';
 import Select from 'react-select';
-import Navbar from '../../../components/navbar/navbar'; 
+import Navbar from '../../../components/navbar/navbar';
 import './AllEvents.css';
+import SessionContext from '../../../api/context/SessionContext';
 
+const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
+  const formatDate = (dateStr) => {
+    const dateObj = new Date(dateStr);
+    const day = dateObj.getDate();
+    const month = dateObj.toLocaleString('default', { month: 'short' }).toUpperCase();
+    return { day, month };
+  };
 
-const eventCardClasses = "min-w-max rounded-lg shadow-lg";
-const imageClasses = "rounded-t-lg";
+  const { day, month } = formatDate(date);
 
-const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, location }) => {
   return (
-    <div className={`bg-${bgColor} text-white ${eventCardClasses}`}>
-      <img src={imgSrc} alt={imgAlt} className={imageClasses} />
+    <div className={`bg-${bgColor} text-white event-card`}>
+      <img src={imgSrc} alt={imgAlt} className="event-image" />
       <div className="p-4">
-        <div className="text-sm">{date}</div>
-        <div className="font-bold text-lg">{title}</div>
-        <div className="text-sm">{location}</div>
+        <div className="date-info">
+          <div className="text-lg">{day}</div>
+          <div className="text-sm">{month}</div>
+        </div>
+        <div className="event-info">
+          <div className="font-bold text-xl">{title}</div>
+          <div className="text-sm">{description}</div>
+        </div>
       </div>
     </div>
   );
 };
 
 const AllEvents = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const events = [
-    
-    {
-      bgColor: "red-500",
-      imgSrc: "https://placehold.co/300x200/e53e3e/ffffff",
-      imgAlt: "Event Image",
-      date: "26 ABR > 01 MAI",
-      title: "DEVOPS",
-      location: "Semana de DevOps",
-    },
-    {
-      bgColor: "blue-500",
-      imgSrc: "https://placehold.co/300x200/3182ce/ffffff",
-      imgAlt: "Event Image",
-      date: "08 JUN > 30 JUN",
-      title: "PYTHON",
-      location: "WorkShop de Python",
-    },
-    {
-      bgColor: "zinc-800",
-      imgSrc: "https://placehold.co/300x200/4a5568/ffffff",
-      imgAlt: "Event Image",
-      date: "15 AGO > 18 AGO",
-      title: "JAVA",
-      location: "Aprenda Java do zero",
-
-    },
-    {
-      bgColor: "yellow-600",
-        imgSrc: "https://placehold.co/300x200/d69e2e/ffffff",
-        imgAlt: "Event Image",
-        date: "SEX, 07 JUN - 19:30",
-        title: "NODE JS",
-        location: "Seja um BackEnd Ninja com Node JS",
-
-    },
-    {
-      bgColor: "blue-500",
-      imgSrc: "https://placehold.co/300x200/3182ce/ffffff",
-      imgAlt: "Event Image",
-      date: "08 JUN > 30 JUN",
-      title: "PYTHON",
-      location: "WorkShop de Python",
-    },
-    {
-      bgColor: "zinc-800",
-      imgSrc: "https://placehold.co/300x200/4a5568/ffffff",
-      imgAlt: "Event Image",
-      date: "15 AGO > 18 AGO",
-      title: "JAVA",
-      location: "Aprenda Java do zero",
-
-    },
-    {
-      bgColor: "red-500",
-      imgSrc: "https://placehold.co/300x200/e53e3e/ffffff",
-      imgAlt: "Event Image",
-      date: "26 ABR > 01 MAI",
-      title: "DEVOPS",
-      location: "Semana de DevOps",
-    },
-    // ... add more events
-  ];
-
+  const { user } = useContext(SessionContext);
+  const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [selectedTag, setSelectedTag] = useState(null);
   const eventListRef = useRef(null);
 
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
+  const fetchEvents = async () => {
+    try {
+      const { data, error } = await supabase.from('event').select('*');
+      if (error) throw error;
+
+      setEvents(data);
+      setFilteredEvents(data);
+
+      const uniqueTags = [...new Set(data.map(event => event.tag))];
+      const tagOptions = [{ value: 'all', label: 'Todos' }, ...uniqueTags.map(tag => ({ value: tag, label: tag }))];
+      setTags(tagOptions);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const handleTagChange = (selectedOption) => {
+    setSelectedTag(selectedOption);
+    if (selectedOption.value === 'all') {
+      setFilteredEvents(events);
+    } else {
+      const filtered = events.filter(event => event.tag === selectedOption.value);
+      setFilteredEvents(filtered);
+    }
+  };
+
   const handleNextSlide = () => {
-    if (currentIndex < events.length - 1) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-      eventListRef.current.scrollBy({
-        left: eventListRef.current.clientWidth,
-        behavior: 'smooth'
-      });
+    if (eventListRef.current.scrollLeft + eventListRef.current.clientWidth < eventListRef.current.scrollWidth) {
+      eventListRef.current.scrollBy({ left: eventListRef.current.clientWidth, behavior: 'smooth' });
     }
   };
 
   const handlePrevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
-      eventListRef.current.scrollBy({
-        left: -eventListRef.current.clientWidth,
-        behavior: 'smooth'
-      });
+    if (eventListRef.current.scrollLeft > 0) {
+      eventListRef.current.scrollBy({ left: -eventListRef.current.clientWidth, behavior: 'smooth' });
     }
   };
 
-  
-  useEffect(() => {
-    const handleResize = () => {
-      
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [currentIndex]); 
-
-
-const months = [
-    { value: 1, label: 'Janeiro' },
-    { value: 2, label: 'Fevereiro' },
-    { value: 3, label: 'Março' },
-    { value: 4, label: 'Abril' },
-    { value: 5, label: 'Maio' },
-    { value: 6, label: 'Junho' },
-    { value: 7, label: 'Julho' },
-    { value: 8, label: 'Agosto' },
-    { value: 9, label: 'Setembro' },
-    { value: 10, label: 'Outubro' },
-    { value: 11, label: 'Novembro' },
-    { value: 12, label: 'Dezembro' },
-];
-
-const [selectedMonth, setSelectedMonth] = useState(null);
-
-const handleMonthChange = (selectedOption) => {
-    setSelectedMonth(selectedOption);
-};
-
   return (
-
-
     <>
-    
-    <div>
-      <Navbar/>
-      
-      </div>
-    
-    
-    <div className="flex items-center">
-      <button onClick={handlePrevSlide} className="coruselBtnPrevious">
-        &lt;
-      </button>
-      <div className="flex overflow-x-scroll space-x-4 p-4" ref={eventListRef}>
-        {events.map((event, index) => (
-          <EventCard
-            key={index}
-            {...event} />
-        ))}
-      </div>
-      <button onClick={handleNextSlide} className="coruselBtnNext">
-        &gt;
-      </button>
-    </div>
-    
-
-    <div className="container">
-  <div className='filter-AllEvents-modified'>
-    <span>Filtrar por mês:&nbsp;&nbsp;&nbsp; </span>
-    <Select  
-        value={selectedMonth}
-        onChange={handleMonthChange}
-        options={months}
-    />
-  </div>
-
-  <div className="events-container">
-    {events.map((event, index) => (
-        <div className="EventCard-modified" key={index}>
-            <EventCard {...event} />
+      <Navbar />
+      <div className="container">
+        <div className="flex items-center">
+          <button onClick={handlePrevSlide} className="coruselBtnPrevious">
+            &lt;
+          </button>
+          <div className="flex overflow-x-hidden space-x-4 p-4" ref={eventListRef}>
+            {filteredEvents.map((event, index) => (
+              <EventCard
+                key={index}
+                bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
+                imgSrc={event.photo}
+                imgAlt={event.name}
+                date={event.date}
+                title={event.name}
+                description={event.description}
+              />
+            ))}
+          </div>
+          <button onClick={handleNextSlide} className="coruselBtnNext">
+            &gt;
+          </button>
         </div>
-    ))}
-  </div>
-</div>
-    
-    </>
 
-      
+        <div className='filter-AllEvents-modified'>
+          <span>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
+          <Select
+            value={selectedTag}
+            onChange={handleTagChange}
+            options={tags}
+          />
+        </div>
+
+        <div className="events-grid">
+          {filteredEvents.map((event, index) => (
+            <div className="event-grid-item" key={index}>
+              <EventCard
+                bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
+                imgSrc={event.photo}
+                imgAlt={event.name}
+                date={event.date}
+                title={event.name}
+                description={event.description}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
