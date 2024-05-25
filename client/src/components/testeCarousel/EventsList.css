@@ -1,12 +1,47 @@
 /* Estilos globais */
 body {
-    font-family: Arial, sans-serif;
     background-color: #fff;
+    margin-top: 8%;
   }
   
   /* Estilos para o EventCard */
   .min-w-max {
-    min-width: max-content;
+    width: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    
+  }
+
+  .dayCard {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0011A8;
+    text-align: left;
+  }
+
+  .titleCard {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+
+  }
+
+  .text-sm {
+    font-size: 0.500rem;
+  }
+
+  .date-info {
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  }
+
+  .event-info {
+    margin-top: 10px;
+
   }
   
   .rounded-lg {
@@ -15,11 +50,14 @@ body {
   
   .shadow-lg {
     
-    border: 2px solid #363738;
+    border: 4px solid #999999b7;
     margin: 10px;
   }
   
   .rounded-t-lg {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
@@ -27,10 +65,16 @@ body {
   /* Estilos para o EventList */
   .flex {
     display: flex;
-    overflow-x: auto;
+    
     gap: 1rem;
     padding: 1rem;
     scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .flex::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
   }
   
   .min-w-max {
@@ -68,6 +112,7 @@ body {
   border-radius: 100px;
   align-self: center;
   border: none;
+  
 }
 
  
@@ -77,7 +122,7 @@ body {
   .filter-by-tag {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Right align elements */
+    justify-content: right; /* Right align elements */
   }
   
   /* .filter-by-tag {
