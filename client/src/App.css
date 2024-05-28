@@ -11,22 +11,32 @@ code {
     monospace;
 }
 
+button {
+  background-color: #0011a8;
+  color: white;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 20px;
+  border: none;
+}
+
 .welcomeBoard {
   display: flex;
-  margin-top: 20px;
-  margin-left: 100px;
+  margin-top: 20vh;
+  
 }
-.welcomeBoard > #backgroundWelcome{
+.welcomeBoard  #backgroundWelcome{
   position: absolute;
-  width: 40vw;
-  height: 95vh;
+  width: 35vw;
+  height: 85vh;
+  margin: -10vh 6vw;
 }
 .welcomePhrase{
   position: absolute;
   color: #ffffff;
   width: 40vw;
-  margin-left: 17vw;
-  margin-top: 40vh;
+  margin: 0 17vw;
+  margin-top: 25vh;
 }
 .loginForm {
   width: 20vw; /* Original form width */
