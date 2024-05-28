@@ -4,9 +4,11 @@ import './EventsList.css';
 import Select from 'react-select';
 import supabase from '../../config/supabaseClient';
 import SessionContext from '../../api/context/SessionContext';
+import AliceCarousel, { Link } from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 const eventCardClasses = "min-w-max rounded-lg shadow-lg";
-const imageClasses = "rounded-t-lg";
+
 
 const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
   const formatDate = (dateStr) => {
@@ -19,8 +21,9 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
   const { day, month } = formatDate(date);
 
   return (
-    <div className={`bg-${bgColor} text-white ${eventCardClasses}`}>
-      <img src={imgSrc} alt={imgAlt} className={imageClasses} />
+    <div className={`bg-${bgColor} text-white ${eventCardClasses} card`}>
+      <div className='margin-Carr'>
+      <img src={imgSrc} alt={imgAlt} className='imageClasses' />
       <div className="p-4 flex flex-col">
         <div className="date-info mb-2">
           <div className="dayCard">{day}</div>
@@ -31,12 +34,13 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
           <div className="text-sm">{description}</div>
         </div>
       </div>
+      </div>
     </div>
   );
 };
 
 const EventList = () => {
-  const { user } = useContext(SessionContext);
+  //const { user } = useContext(SessionContext);
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [events, setEvents] = useState([]);
@@ -45,11 +49,11 @@ const EventList = () => {
   const [tags, setTags] = useState([]);
   const eventListRef = useRef(null);
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/login');
-    }
-  }, [user, navigate]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate('/login');
+  //   }
+  // }, [user, navigate]);
 
   const fetchEvents = async () => {
     try {
@@ -79,26 +83,6 @@ const EventList = () => {
     fetchEvents();
   }, []);
 
-  const handleNextSlide = () => {
-    if (currentIndex < filteredEvents.length - 1) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-      eventListRef.current.scrollBy({
-        left: eventListRef.current.clientWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const handlePrevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
-      eventListRef.current.scrollBy({
-        left: -eventListRef.current.clientWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const handleTagChange = (selectedOption) => {
     setSelectedTag(selectedOption);
     if (selectedOption.value === 'all') {
@@ -112,18 +96,19 @@ const EventList = () => {
   
 
   return (
-    <div>
+    <div className='EventL-conteiner'>
       <div className="filter-by-tag">
         <span className='name-tag'>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
         <Select className='select-tag' value={selectedTag} onChange={handleTagChange} options={tags} />
       </div>
-      <div className="flex items-center">
-        <button onClick={handlePrevSlide} className="coruselBtnPrevious">
-          &lt;
-        </button>
-        <div className="flex overflow-x-hidden space-x-4 p-4" ref={eventListRef}>
-          {filteredEvents.map((event, index) => (
+      <div className="">
+      <AliceCarousel
+          mouseTracking
+          keyboardNavigation
+          items={
+            filteredEvents.map((event, index) => (
             <EventCard
+              
               key={index}
               bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
               imgSrc={event.photo}
@@ -131,12 +116,21 @@ const EventList = () => {
               date={event.date}
               title={event.name}
               description={event.description}
+              className={'event-card'}
+              
             />
           ))}
-        </div>
-        <button onClick={handleNextSlide} className="coruselBtnNext">
-          &gt;
-        </button>
+          responsive={{
+            0: { items: 1 },
+            256: { items: 2 },
+            512: { items: 3 },
+            768: { items: 4 },
+            1024: { items: 4 }
+          }}
+          infinite
+
+        />
+
       </div>
       <div className="btn-final">
         <button  onClick={navigateToCreateEvent} className="btn btn-primary mr-2">Criar Eventos</button>

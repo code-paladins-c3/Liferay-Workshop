@@ -1,139 +1,105 @@
 /* Estilos globais */
 body {
-    background-color: #fff;
-    margin-top: 8%;
-  }
-  
-  /* Estilos para o EventCard */
-  .min-w-max {
-    width: 300px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    
-  }
+  background-color: #fff;
+  margin-top: 8%;
+}
 
-  .dayCard {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #0011A8;
-    text-align: left;
-  }
+/* Estilos para o EventCard */
 
-  .titleCard {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000;
-    text-align: left;
 
-  }
+.EventL-conteiner {
+  margin: 5%;
+}
 
-  .text-sm {
-    font-size: 0.500rem;
-  }
+.card {
+  width: 400px;
+  height: 300px;
+  border:  7px solid #D3D3D3;
+  border-radius: 20px;
+ align-self: center;
+ 
+}
 
-  .date-info {
-    display: flex;
+.card:hover {
+  box-shadow: 0 8px 16px rgb(6, 156, 237);
+
+}
+
+
+
+.dayCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0011A8;
+  text-align: left;
+}
+
+.titleCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+}
+
+.text-sm {
+  font-size: 0.900rem;
+}
+
+.date-info {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  }
-
-  .event-info {
-    margin-top: 10px;
-
-  }
-  
-  .rounded-lg {
-    border-radius: 1rem;
-  }
-  
-  .shadow-lg {
-    
-    border: 4px solid #999999b7;
-    margin: 10px;
-  }
-  
-  .rounded-t-lg {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-  }
-  
-  /* Estilos para o EventList */
-  .flex {
-    display: flex;
-    
-    gap: 1rem;
-    padding: 1rem;
-    scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-  
-  .flex::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, Opera */
-  }
-  
-  .min-w-max {
-    scroll-snap-align: start;
-  }
-
-  .btn-final {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
 }
+
+.event-info {
+  margin-top: 10px;
+}
+
+.btn-final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageClasses {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: 200px;
+}
+
 
 .btn-final .btn {
   width: 200px;
-    background-color: #0011A8;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 30px;
-    overflow: hidden;
-    height: 50px;
-    margin: 50px;
+  background-color: #0011A8;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 50px;
+  margin: 50px;
 }
 
 .btn-final .btn:hover {
   background-color: #2b6cb0;
 }
-.coruselBtnNext, .coruselBtnPrevious{
-  height: 40px;
-  width: 60px;
-  border-radius: 100px;
-  align-self: center;
-  border: none;
-  
+
+/* Ajuste do layout */
+.filter-by-tag {
+  display: flex;
+  align-items: center;
+  justify-content: right; /* Right align elements */
 }
 
- 
-  
-  /*  teste */
+.carousel-container {
+  padding: 20px;
+}
 
-  .filter-by-tag {
-    display: flex;
-    align-items: center;
-    justify-content: right; /* Right align elements */
-  }
-  
-  /* .filter-by-tag {
-    position: absolute;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px;
-  }
-  
-   */
-  
+.alice-carousel__stage-item {
+  padding-right: 70px;
+}
