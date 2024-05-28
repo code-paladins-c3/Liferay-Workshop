@@ -1,6 +1,8 @@
 {
+
   "short_name": "Liferay",
-  "name": "liferay Workshop",
+  "name": "Liferay Workshop",
+
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,0 +1,83 @@
+/* Estilos para o EventCard */
+.event-card {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.date-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-info {
+  margin-top: 10px;
+}
+
+.flex {
+  display: flex;
+  overflow-x: hidden;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+}
+
+.flex::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+.coruselBtnPrevious,
+.coruselBtnNext {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.filter-AllEvents-modified {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.event-grid-item {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1200px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+}
