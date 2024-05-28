@@ -93,32 +93,32 @@ const EventCreate = () => {
     };
 
     const handlePhotoChange = (event) => {
-        // const file = event.target.files[0];
-        // setPhotoFile(file);
-        // setPhoto(URL.createObjectURL(file));
+        const file = event.target.files[0];
+        setPhotoFile(file);
+        setPhoto(URL.createObjectURL(file));
     };
 
-    // const uploadPhotoToStorage = async () => {
-    //     if (photoFile) {
-    //         const fileName = `${Date.now()}_${photoFile.name}`;
-    //         const { data, error } = await supabase
-    //             .storage
-    //             .from('EventsPhotos')
-    //             .upload(fileName, photoFile);
+    const uploadPhotoToStorage = async () => {
+        if (photoFile) {
+            const fileName = `${Date.now()}_${photoFile.name}`;
+            const { data, error } = await supabase
+                .storage
+                .from('EventsPhotos')
+                .upload(fileName, photoFile);
 
-    //         if (error) throw error;
-    //         const photoURL = supabase
-    //             .storage
-    //             .from('EventsPhotos')
-    //             .getPublicUrl(fileName).data.publicUrl;
-    //         return photoURL;
-    //     }
-    //     return '';
-    // };
+            if (error) throw error;
+            const photoURL = supabase
+                .storage
+                .from('EventsPhotos')
+                .getPublicUrl(fileName).data.publicUrl;
+            return photoURL;
+        }
+        return '';
+    };
 
     const handleEventCreate = async () => {
         try {
-            // const photoURL = await uploadPhotoToStorage();
+            const photoURL = await uploadPhotoToStorage();
 
             const event = {
                 name,
@@ -160,7 +160,7 @@ const EventCreate = () => {
                     </div>
                     <div className="form-group-EventCreate">
                         <label htmlFor="skill" className="label-EventCreate">Tema</label>
-                        <Select
+                        <Select 
                             value={selectedSkill}
                             onChange={handleSkillChange}
                             options={skills}
@@ -198,7 +198,7 @@ const EventCreate = () => {
                         <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-EventCreate" rows="4"></textarea>
                     </div>
                     <div className="button-container">
-                        <button id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
+                        <button className='buttonFirstAccess' id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
                     </div>
                 </form>
             </div>

@@ -69,7 +69,7 @@ code {
   background:none;
   position: relative;
   left: 0vw;
-  width: 8vw; /* This will make the reset button occupy the entire width of the form */
+  width: 8vw; 
   color: #4285F4;
   padding: 14px 20px;
   margin: 8px 0;
@@ -161,6 +161,7 @@ code {
 
 
 .container-EventCreate {
+    margin: 100px;
     width: 90%;
     padding-right: 100px;
     padding-right: 100px;
@@ -169,6 +170,7 @@ code {
     border-radius: 67px;
     background: #fff;
     box-shadow: 0px 0px 20px 0px rgba(87, 86, 86, 0.788);
+    
 }
 
 .texto_criarEvento {
@@ -182,6 +184,10 @@ code {
     padding-inline-start: 20%;
     padding-bottom: 50px;
     margin-bottom: 10px;
+}
+
+.selectSkillEventCreate {
+  
 }
 
 .label-EventCreate {
@@ -225,7 +231,7 @@ code {
     text-align: right;
 }
 
-.button-EventCreate {
+.button-containerEventCreate {
     width: 200px;
     background-color: #0011A8;
     color: #FFFFFF;
@@ -240,7 +246,7 @@ code {
     margin: 50px;
 }
 
-.button-EventCreate:hover {
+.button-containerEventCreate:hover {
     background-color: #0025FF;
 }
 
