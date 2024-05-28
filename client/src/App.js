@@ -25,7 +25,7 @@ function App() {
             <Route path="/eventcreate" element={<EventCreate />} />
             <Route path="/allevents" element={<AllEvents />} />
             <Route path="/mainevents" element={<MainEvents/>} />
-             <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </SessionProvider>

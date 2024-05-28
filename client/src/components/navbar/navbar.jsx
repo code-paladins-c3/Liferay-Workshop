@@ -3,10 +3,7 @@ import './navbar.css';
 import logo from './Liferay-logo-full-color-2x 2.png';
 
 import user from './user.png';
-import edit from './edit.png';
-import settings from './settings.png';
-import help from './question.png';
-import logout from './log-out.png';
+
 
 function Navbar () {
     const [searchTerm, setSearchTerm] = useState('');

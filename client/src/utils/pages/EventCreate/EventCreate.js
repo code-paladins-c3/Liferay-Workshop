@@ -93,32 +93,32 @@ const EventCreate = () => {
     };
 
     const handlePhotoChange = (event) => {
-        // const file = event.target.files[0];
-        // setPhotoFile(file);
-        // setPhoto(URL.createObjectURL(file));
+        const file = event.target.files[0];
+        setPhotoFile(file);
+        setPhoto(URL.createObjectURL(file));
     };
 
-    // const uploadPhotoToStorage = async () => {
-    //     if (photoFile) {
-    //         const fileName = `${Date.now()}_${photoFile.name}`;
-    //         const { data, error } = await supabase
-    //             .storage
-    //             .from('EventsPhotos')
-    //             .upload(fileName, photoFile);
+    const uploadPhotoToStorage = async () => {
+        if (photoFile) {
+            const fileName = `${Date.now()}_${photoFile.name}`;
+            const { data, error } = await supabase
+                .storage
+                .from('EventsPhotos')
+                .upload(fileName, photoFile);
 
-    //         if (error) throw error;
-    //         const photoURL = supabase
-    //             .storage
-    //             .from('EventsPhotos')
-    //             .getPublicUrl(fileName).data.publicUrl;
-    //         return photoURL;
-    //     }
-    //     return '';
-    // };
+            if (error) throw error;
+            const photoURL = supabase
+                .storage
+                .from('EventsPhotos')
+                .getPublicUrl(fileName).data.publicUrl;
+            return photoURL;
+        }
+        return '';
+    };
 
     const handleEventCreate = async () => {
         try {
-            // const photoURL = await uploadPhotoToStorage();
+            const photoURL = await uploadPhotoToStorage();
 
             const event = {
                 name,
