@@ -56,9 +56,12 @@ const FirstAccess = () => {
         return groups;
       }, {}));
 
+
+
       setOptions(groupedOptions);
     } catch (error) {
       console.error("Error fetching options:", error);
+
     }
   };
 
