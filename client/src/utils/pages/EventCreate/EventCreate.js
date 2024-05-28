@@ -160,7 +160,7 @@ const EventCreate = () => {
                     </div>
                     <div className="form-group-EventCreate">
                         <label htmlFor="skill" className="label-EventCreate">Tema</label>
-                        <Select
+                        <Select 
                             value={selectedSkill}
                             onChange={handleSkillChange}
                             options={skills}
@@ -198,7 +198,7 @@ const EventCreate = () => {
                         <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-EventCreate" rows="4"></textarea>
                     </div>
                     <div className="button-container">
-                        <button id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
+                        <button className='buttonFirstAccess' id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
                     </div>
                 </form>
             </div>
