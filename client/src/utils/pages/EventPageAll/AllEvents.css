@@ -51,17 +51,25 @@
   margin-left: 10px;
   margin-bottom: 20px;
 }
-
+/*events-grid  muda a largura dos cards*/
 .events-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  padding: 1rem;
+  display: grid;  
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5rem;
+  padding: 5rem;
+  margin-top: -4rem;
+  
 }
 
 .event-grid-item {
-  display: flex;
-  justify-content: center;
+  flex: 1 0 20%;
+  margin: 5px;
+}
+@media (max-width: 800px) {
+  .event-grid-item {
+    flex: 1 0 50%;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -80,4 +88,37 @@
   .events-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/*igor*/
+.dayCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0011A8;
+  text-align: left;
+}
+
+.titleCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+}
+
+.text-sm {
+  font-size: 0.500rem;
+}
+
+.date-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-info {
+  margin-top: 10px;
+}
+
+.rounded-lg {
+  border-radius: 1rem;
 }
