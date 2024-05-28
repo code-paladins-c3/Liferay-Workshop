@@ -1,0 +1,54 @@
+.editProfile {
+    display: inline-flex;
+    margin: 30px;
+    border: 5px solid #d9d9d9;
+    border-radius: 15px;
+    padding: 20px;
+    width: 92vw;
+    height: 87vh;
+}
+.avatar {
+    position: relative;
+    left: 20%;
+    top: 10%;
+    width: 450px;
+    height:450px;
+
+}
+.form{
+    position: relative;
+    left: 20%;
+    top: 15%;
+}
+.boxForm {
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45vw;
+}
+.boxForm input,[type="email"], .boxForm[type="text"]{
+    background-color: #d9d9d9;
+    width: 100%;
+    padding: 10px;
+    margin: 20px -2px;
+    display: inline-block;
+    border: none;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+.boxForm button, [type="submit"]{
+    position: relative;
+    left: 80%;
+    width: 20%;
+    background-color: #0011A8;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}

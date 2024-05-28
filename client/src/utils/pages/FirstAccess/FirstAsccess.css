@@ -44,7 +44,7 @@
 }
 
 /* Button */
-.button {
+.buttonFirstAccess {
     width: 200px;
     height: 50px;
     background-color: #0011A8;
@@ -58,6 +58,6 @@
     transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.buttonFirstAccess:hover {
     background-color: #0025FF;
 }
