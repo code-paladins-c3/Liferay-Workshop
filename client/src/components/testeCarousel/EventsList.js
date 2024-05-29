@@ -6,6 +6,8 @@ import supabase from '../../config/supabaseClient';
 import SessionContext from '../../api/context/SessionContext';
 import AliceCarousel, { Link } from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import SetaDireita from './setaDireita.png';
+import SetaEsquerda from './setaEsquerda.png';
 
 const eventCardClasses = "min-w-max rounded-lg shadow-lg";
 
@@ -37,6 +39,17 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
       </div>
     </div>
   );
+};
+
+const handleOnResize = (event) => {
+  const { innerWidth: width } = window;
+  let itemsToShow = 1;
+
+  if (width >= 1024) {
+    itemsToShow = 2;
+  }
+
+  return { items: itemsToShow };
 };
 
 const EventList = () => {
@@ -128,7 +141,17 @@ const EventList = () => {
             1024: { items: 4 }
           }}
           infinite
-
+          onResized={handleOnResize}
+          renderPrevButton={() => 
+            <button className="alice-carousel__prev-btn">
+              <img src={SetaEsquerda} alt="Previous" />
+            </button>
+          }
+          renderNextButton={() => 
+            <button className="alice-carousel__next-btn">
+              <img src={SetaDireita} alt="Next" />
+            </button>
+          }
         />
 
       </div>

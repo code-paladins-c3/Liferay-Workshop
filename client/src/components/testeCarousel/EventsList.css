@@ -24,6 +24,34 @@ body {
   box-shadow: 0 8px 16px rgb(6, 156, 237);
 
 }
+.alice-carousel__prev-btn img,
+.alice-carousel__next-btn img {
+  width: 10%;
+  height: 10%;
+  object-fit: contain;
+  
+}
+.alice-carousel__prev-btn {
+  position: absolute;
+  object-fit: contain;
+  top: 50%;
+  left: -230px;
+  margin: 0;;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
+.alice-carousel__next-btn {
+  object-fit: contain;
+  position: absolute;
+  width: 10px;
+  top: 50%;
+  right: -220px;;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
 
 
 
@@ -93,7 +121,8 @@ body {
 .filter-by-tag {
   display: flex;
   align-items: center;
-  justify-content: right; /* Right align elements */
+  justify-content: left;
+  margin-bottom: 40px;
 }
 
 .carousel-container {
