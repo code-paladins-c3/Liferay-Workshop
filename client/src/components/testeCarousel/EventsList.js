@@ -53,7 +53,7 @@ const handleOnResize = (event) => {
 };
 
 const EventList = () => {
-  //const { user } = useContext(SessionContext);
+  const { user } = useContext(SessionContext);
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [events, setEvents] = useState([]);
@@ -62,11 +62,11 @@ const EventList = () => {
   const [tags, setTags] = useState([]);
   const eventListRef = useRef(null);
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate('/login');
-  //   }
-  // }, [user, navigate]);
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   const fetchEvents = async () => {
     try {
@@ -134,11 +134,14 @@ const EventList = () => {
             />
           ))}
           responsive={{
-            0: { items: 1 },
-            256: { items: 2 },
-            512: { items: 3 },
-            768: { items: 4 },
-            1024: { items: 4 }
+            100: { items: 1, },
+            256: { items: 1, },
+            300: { items: 1, },
+            512: { items: 2, },
+            900: { items: 2, },
+            1024: { items: 3, },
+            1920: { items: 4, }
+          
           }}
           infinite
           onResized={handleOnResize}

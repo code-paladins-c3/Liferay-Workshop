@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 import supabase from '../../../config/supabaseClient';
-import NaviBar from '../../../components/navbar/navbar.jsx';
+import NaviBar from '../../../components/navbar/navbar';
 import SessionContext from '../../../api/context/SessionContext';
 
 const PhotoPreview = ({ photo }) => {

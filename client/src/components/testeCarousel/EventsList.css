@@ -2,6 +2,7 @@
 body {
   background-color: #fff;
   margin-top: 8%;
+  overflow-x: hidden;
 }
 
 /* Estilos para o EventCard */
@@ -20,6 +21,7 @@ body {
  
 }
 
+
 .card:hover {
   box-shadow: 0 8px 16px rgb(6, 156, 237);
 
@@ -31,6 +33,12 @@ body {
   object-fit: contain;
   
 }
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  position: fixed;
+}
+
 .alice-carousel__prev-btn {
   position: absolute;
   object-fit: contain;
@@ -51,6 +59,19 @@ body {
   transform: translateY(-50%);
   background: none;
   border: none;
+}
+
+@media (max-width: 1024px) {
+  .alice-carousel__prev-btn {
+    width: 20px;
+    left: -110px;
+    
+  }
+
+  .alice-carousel__next-btn {
+    width: 20px;
+    right: -110px;
+  }
 }
 
 
