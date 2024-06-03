@@ -81,11 +81,14 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="welcomeBoard desktop-only">
+      <div>
+      
+        <div className="welcomeBoard desktop-only">
         <img src={foto} alt="background" id="backgroundWelcome" />
-      </div>
-      <div className="welcomePhrase desktop-only">
-        <h1>Welcome to <span>Liferay</span></h1>
+        <h1 className="welcomePhrase desktop-only">Welcome to Liferay</h1>
+      
+        </div>
+        
       </div>
       <div className="loginForm">
         <div className="labelForm">

@@ -11,22 +11,32 @@ code {
     monospace;
 }
 
+button {
+  background-color: #0011a8;
+  color: white;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 20px;
+  border: none;
+}
+
 .welcomeBoard {
   display: flex;
-  margin-top: 20px;
-  margin-left: 100px;
+  margin-top: 20vh;
+  
 }
-.welcomeBoard > #backgroundWelcome{
+.welcomeBoard  #backgroundWelcome{
   position: absolute;
-  width: 40vw;
-  height: 95vh;
+  width: 35vw;
+  height: 85vh;
+  margin: -10vh 6vw;
 }
 .welcomePhrase{
   position: absolute;
   color: #ffffff;
   width: 40vw;
-  margin-left: 17vw;
-  margin-top: 40vh;
+  margin: 0 17vw;
+  margin-top: 25vh;
 }
 .loginForm {
   width: 20vw; /* Original form width */
@@ -90,12 +100,14 @@ code {
 
 .editProfile {
   display: inline-flex;
-  margin: 30px;
+  margin-left: 4%;
   border: 5px solid #d9d9d9;
   border-radius: 15px;
-  padding: 20px;
-  width: 92vw;
-  height: 87vh;
+  width: 90vw;
+  height: 85vh;
+}
+.structure{
+  margin: 3%;
 }
 .avatar {
   position: relative;
@@ -107,33 +119,42 @@ code {
 
 }
 .form{
-  position: relative;
-  left: 20%;
-  top: 15%;
+  position: absolute;
+  right: 0%;
+  top: 30%;
+  width: 45vw;
+  height: 25vh;
 }
+.form-group{ 
+  position: relative ;
+  display:grid;
+ 
+  right: 3vw;
+}
+
 .boxForm {
   display: flex;
   flex-direction: column;
   justify-content:baseline;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  width: 45vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding-left: 20px;
+  
 }
 .boxForm > input,[type="email"],[type="text"]{
   background-color: #d9d9d9;
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  margin: 20px -2px;
+  margin-top:1.5vh;
+  margin-bottom: 2vh;
   display: inline-block;
   border: none;
   border-radius: 12px;
   box-sizing: border-box;
 }
 .boxForm> button, [type="submit"]{
-  position: relative;
-  left: 80%;
+  position: relative; ;
+  left: 60%;
   width: 20%;
   background-color: #0011A8;
   color: white;
