@@ -17,7 +17,9 @@ body {
   height: 300px;
   border:  7px solid #D3D3D3;
   border-radius: 20px;
- align-self: center;
+  align-self: center;
+  text-decoration: none;
+
  
 }
 
@@ -42,8 +44,8 @@ body {
 .alice-carousel__prev-btn {
   position: absolute;
   object-fit: contain;
-  top: 50%;
-  left: -230px;
+  top: 10vh;
+  left: -10.5vw;
   margin: 0;;
   transform: translateY(-50%);
   background: none;
@@ -54,19 +56,20 @@ body {
   object-fit: contain;
   position: absolute;
   width: 10px;
-  top: 50%;
-  right: -220px;;
+  top: 10vh;
+  right: -10.5vw;
   transform: translateY(-50%);
   background: none;
   border: none;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .alice-carousel__prev-btn {
     width: 20px;
     left: -110px;
     
   }
+
 
   .alice-carousel__next-btn {
     width: 20px;
@@ -74,6 +77,22 @@ body {
   }
 }
 
+
+@media (min-width: 2560px) {
+  .alice-carousel__prev-btn {
+    width: 20px;
+    left: -300px;
+    
+  }
+
+  
+
+  .alice-carousel__next-btn {
+    position: relative;
+    width: 20px;
+    right: 1vw;
+  }
+} */
 
 
 .dayCard {
@@ -152,4 +171,11 @@ body {
 
 .alice-carousel__stage-item {
   padding-right: 70px;
+}
+.alice-carousel{
+  padding-left: 5vw;
+}
+.alice-carousel__dots{
+  position: relative;
+left: -2vw;
 }
