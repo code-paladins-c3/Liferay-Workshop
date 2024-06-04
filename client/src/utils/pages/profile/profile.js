@@ -1,6 +1,6 @@
 import React from 'react';
 import profileFoto from "./avatar.png"
-import NaviBar from '../../../components/navbar/navbar.jsx';
+import NaviBar from '../../../components/navbar/navbar';
 
 function profile() {
     return (
