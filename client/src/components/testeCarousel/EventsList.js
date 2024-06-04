@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import './EventsList.css';
 import Select from 'react-select';
 import supabase from '../../config/supabaseClient';
 import SessionContext from '../../api/context/SessionContext';
-import AliceCarousel, { Link } from 'react-alice-carousel';
+import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import SetaDireita from './setaDireita.png';
 import SetaEsquerda from './setaEsquerda.png';
@@ -12,7 +12,7 @@ import SetaEsquerda from './setaEsquerda.png';
 const eventCardClasses = "min-w-max rounded-lg shadow-lg";
 
 
-const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
+const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description , id }) => {
   const formatDate = (dateStr) => {
     const dateObj = new Date(dateStr);
     const day = dateObj.getDate();
@@ -23,6 +23,7 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
   const { day, month } = formatDate(date);
 
   return (
+    <Link to={`/eventpage/${id}`}>
     <div className={`bg-${bgColor} text-white ${eventCardClasses} card`}>
       <div className='margin-Carr'>
       <img src={imgSrc} alt={imgAlt} className='imageClasses' />
@@ -38,6 +39,8 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
       </div>
       </div>
     </div>
+    </Link>
+
   );
 };
 
@@ -119,19 +122,19 @@ const EventList = () => {
           mouseTracking
           keyboardNavigation
           items={
-            filteredEvents.map((event, index) => (
-            <EventCard
-              
-              key={index}
-              bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
-              imgSrc={event.photo}
-              imgAlt={event.name}
-              date={event.date}
-              title={event.name}
-              description={event.description}
-              className={'event-card'}
-              
-            />
+           filteredEvents.map((event, index) => (
+           
+              <EventCard
+                bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
+                imgSrc={event.photo}
+                imgAlt={event.name}
+                date={event.date}
+                title={event.name}
+                description={event.description}
+                className={'event-card'}
+                id={event.id}
+              />
+            
           ))}
           responsive={{
             100: { items: 1, },

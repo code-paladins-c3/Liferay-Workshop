@@ -8,6 +8,7 @@ import AllEvents from './utils/pages/EventPageAll/AllEvents.js';
 import Login from './utils/pages/Login/login.js';
 import Profile from './utils/pages/profile/profile.js';
 import MainEvents from './utils/pages/main/mainEvents';
+import EventPage from './utils/pages/EventPage/EventPage.js';
 import { SessionProvider } from './api/context/SessionContext.js';
 
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/allevents" element={<AllEvents />} />
             <Route path="/mainevents" element={<MainEvents/>} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/eventpage/:eventId" element={<EventPage />} />
           </Routes>
         </div>
       </SessionProvider>

@@ -100,7 +100,7 @@
     right: 20px;
     height: 20px;
     width: 20px;
-    background: var(--secondary-bg);
+    background: #fff;
     transform: rotate(45deg);
   }
   
@@ -128,7 +128,7 @@
     padding: 20px 0;
     font-weight: 500;
     font-size: 18px;
-    color: var(--primary-text-color);
+    color: #fcf7f7;
     line-height: 1.2rem;
   }
   

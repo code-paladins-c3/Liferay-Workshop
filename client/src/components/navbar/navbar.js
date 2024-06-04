@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './navbar.css';
 import logo from './Liferay-logo-full-color-2x 2.png';
-
 import user from './user.png';
 
 
