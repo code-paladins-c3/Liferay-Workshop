@@ -5,8 +5,9 @@ import EventsList from '../../../components/testeCarousel/EventsList';
 function mainEvents() {
     return (
        <>
-       <Navbar/>
+       
        <EventsList/>
+       <Navbar/>
        </>
     );
 }
