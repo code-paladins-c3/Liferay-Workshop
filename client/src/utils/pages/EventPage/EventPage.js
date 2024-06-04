@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import supabase from "../../../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import Navbar from '../../../components/navbar/navbar';
 import './EventPage.css';
 import LocationIcon from './Asserts/Location.png';
 import ClockIcon from './Asserts/Clock.png';
@@ -46,11 +47,16 @@ const EventPage = () => {
     const googleCalendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.name)}&dates=${event.date}T${event.time}/${event.date}T${event.time}&location=${encodeURIComponent(event.location)}&sf=true&output=xml`;
 
     return (
+
+        <>
+        <Navbar/>
         <div className="event-page">
             <img src={event.photo} alt="Event" className="event-image" />
             <div className="event-content">
                 <div className="event-left">
                     <h1 className="event-title">{event.name}</h1>
+                    <h2 className="event-Description-title">Descrição do Evento:</h2>
+
                     <p className="event-description">{event.description}</p>
                 </div>
                 <div className="event-right">
@@ -98,6 +104,7 @@ const EventPage = () => {
             </div>
 
         </div>
+        </>
     );
 };
 
