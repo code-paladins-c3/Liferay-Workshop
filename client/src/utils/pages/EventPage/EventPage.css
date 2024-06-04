@@ -1,0 +1,145 @@
+.event-page {
+    text-align: center;
+    margin: 10%;
+    padding: 5%;
+    border-radius: 15px;
+    border: 7px solid #D3D3D3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-image {
+    border-radius: 41px;
+    background: lightgray 50% / cover no-repeat, #C4C4C4;
+    width: 70vw;
+    height: 35vh;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.event-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.event-left {
+    flex: 0.6;
+    width: 48%;
+    text-align: left;
+}
+
+.event-title {
+    font-size: 120px;
+    margin: 0;
+}
+
+.event-description {
+    font-size: 24px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.event-right {
+    flex: 0.3;
+    width: 48%;
+    text-align: left;
+}
+
+.event-tags {
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+
+    display: inline-block;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid blue;
+    color: blue;
+    border-radius: 12px;
+    margin: 5px;
+
+}
+
+.event-details .detail {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.event-details img {
+    margin-right: 10px;
+}
+
+.subscribe-button {
+    width: 200px;
+    height: 50px;
+    background-color: #0011A8;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 30px;
+    margin: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.popup {
+    text-align: center;
+    align-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background-Color: white;
+    z-index: 1000;
+    border-radius: 20px;
+    padding: 4%;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+
+
+}
+
+.Inscricao-Text {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px;
+
+}
+
+.btn-saveCalendar {
+    background: none;
+    border: 4px solid #5e5c5c;
+    border-radius: 10px;
+    font-size: 30px;
+    text-align: center;
+    align-content: center;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+    
+}
+
+.event-Description-title{
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 10%;
+    margin-bottom: 5%;
+
+}
+.imgCalendar {
+    width: 10%;
+
+}
+
+.imgVerify{
+    width: 10%;
+}
