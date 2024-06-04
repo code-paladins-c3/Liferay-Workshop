@@ -4,11 +4,12 @@ import supabase from "../../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import './navbar.css';
 import logo from './Liferay-logo-full-color-2x 2.png';
-import user from './user.png';
+import userPlaceholder from './user.png';
 
 function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
   const [open, setOpen] = useState(false);
+  const [profile, setProfile] = useState({ name: '', avatar_url: '' });
   let menuRef = useRef();
   const session = useContext(SessionContext);
   const navigate = useNavigate();
@@ -17,7 +18,6 @@ function Navbar() {
     let handler = (e) => {
       if (!menuRef.current.contains(e.target)) {
         setOpen(false);
-        console.log(menuRef.current);
       }
     };
 
@@ -28,12 +28,46 @@ function Navbar() {
     }
   }, []);
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const user = session.user;
+        if (!user) {
+          console.error("Usuário não encontrado na sessão");
+          return;
+        }
+
+        console.log("Fetching profile for user:", user);
+
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('username, avatar_url')
+          .eq('id', user.id);
+
+        if (error) {
+          throw error;
+        }
+
+        if (data.length === 0) {
+          console.error("Perfil não encontrado");
+          return;
+        }
+
+        console.log("Profile data:", data[0]);
+        setProfile(data[0]);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    }
+
+    fetchProfile();
+  }, [session.user]);
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const handleLogout = async () => {
-
     try {
       const { error } = await supabase.auth.signOut();
 
@@ -47,50 +81,21 @@ function Navbar() {
     }
   }
 
-  const handleProfile = async () => {
+  const handleProfile = () => {
     navigate("/profile");
   }
 
-  const fetchProfile = async () => {
-    try {
-      const user = session.user;
-      if (!user) {
-        throw new Error("Usuário não encontrado na sessão");
-      }
-
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('First_Access')
-        .eq('id', user.id);
-
-      if (error) {
-        throw error;
-      }
-
-      if (data.length === 0) {
-        throw new Error("Perfil não encontrado");
-      }
-
-      if (data[0].First_Access) {
-        navigate("/first-access");
-      }
-      if (!user.id) {
-        navigate("/login");
-      }
-    } catch (error) {
-      console.error("Error fetching profile:", error);
-    }
+  const handleMainEvents = () => {
+    navigate("/mainevents");
   }
-
 
   return (
     <nav className="nav">
-      <a href="#" className="nav__brand">
+      <div className="nav__brand" onClick={handleMainEvents}>
         <img src={logo} alt="Liferay" />
-      </a>
+      </div>
 
       <div className="nav__search-container">
-
         <input
           type="text"
           placeholder="Search"
@@ -98,28 +103,24 @@ function Navbar() {
           onChange={handleSearchChange}
           className="nav__search"
         />
-
       </div>
+
       <ul className="nav__menu">
-        <li className="nav__link">
-
-
-
-        </li>
+        <li className="nav__link"></li>
       </ul>
 
       <div className="App">
         <div className='menu-container' ref={menuRef}>
           <div className='menu-trigger' onClick={() => { setOpen(!open) }}>
-            <img src={user}></img>
+            <img src={profile.avatar_url || userPlaceholder} alt="User Avatar" />
           </div>
 
           <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`} >
-            <h3 className='menu-trigger'>Nome</h3>
+            <h3 className='menu-trigger-Name'>{profile.username || 'Carregando...'}</h3>
             <ul>
-              <DropdownItem text={"Meu Perfil"} />
+              <DropdownItem text={"Meu Perfil"} onClick={handleProfile} />
               <DropdownItem text={"Cursos Registrado"} />
-              <DropdownItem text={"Sair"} />
+              <DropdownItem text={"Sair"} onClick={handleLogout} />
             </ul>
           </div>
         </div>
@@ -127,11 +128,11 @@ function Navbar() {
     </nav>
   );
 }
-function DropdownItem(props) {
+
+function DropdownItem({ text, onClick }) {
   return (
-    <li className='dropdownItem'>
-      <img src={props.img}></img>
-      <a> {props.text} </a>
+    <li className='dropdownItem' onClick={onClick}>
+      <a>{text}</a>
     </li>
   );
 }

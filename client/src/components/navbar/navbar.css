@@ -44,7 +44,6 @@
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat scroll 7px 7px;
   background-color: #cfcfcf;
   padding-left: 30px;
-  font-family: Source Sans Pro;
 }
 
 .nav__search-container {
@@ -90,6 +89,10 @@
   background-color: #fff;
 }
 
+.menu-trigger-Name {
+  
+}
+
 .dropdown-menu {
   position: absolute;
   top: 70px;
@@ -118,6 +121,9 @@
   visibility: visible;
   transform: translateY(0);
   transition: var(--speed) ease;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 15px;
 
 }
 
@@ -126,6 +132,7 @@
   visibility: hidden;
   transform: translateY(-20px);
   transition: var(--speed) ease;
+  
 }
 
 
