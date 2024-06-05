@@ -1,10 +1,65 @@
-/* Estilos para o EventCard */
-.event-card {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Estilos para o AllEvents*/
+
+body {
+  background-color: #fff;
+  margin-top: 8%;
+  overflow-x: hidden;
 }
+
+
+
+.card {
+  width: 400px;
+  height: 300px;
+  border:  7px solid #D3D3D3;
+  border-radius: 20px;
+  align-self: center;
+  text-decoration: none;
+
+}
+  .card:hover {
+    box-shadow: 0 8px 16px rgb(6, 156, 237);
+  
+  }
+
+
+  .alice-carousel__prev-btn img,
+  .alice-carousel__next-btn img {
+    width: 10%;
+    height: 10%;
+    object-fit: contain;
+    
+  }
+  
+  .alice-carousel__prev-btn,
+  .alice-carousel__next-btn {
+    position: fixed;
+  }
+  
+  .alice-carousel__prev-btn {
+    position: absolute;
+    object-fit: contain;
+    top: 10vh;
+    left: -10.5vw;
+    margin: 0;;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+  }
+  
+  .alice-carousel__next-btn {
+    object-fit: contain;
+    position: absolute;
+    width: 10px;
+    top: 10vh;
+    right: -10.5vw;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+  }
+
+ 
+
 
 .event-image {
   width: 100%;
@@ -32,25 +87,9 @@
   scroll-snap-type: x mandatory;
 }
 
-.flex::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari, Opera */
-}
 
-.coruselBtnPrevious,
-.coruselBtnNext {
-  background-color: transparent;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-}
 
-.filter-AllEvents-modified {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 10px;
-  margin-bottom: 20px;
-}
+
 /*events-grid  muda a largura dos cards*/
 .events-grid {
   display: grid;  
@@ -106,7 +145,7 @@
 }
 
 .text-sm {
-  font-size: 0.500rem;
+  font-size: 0.900rem;
 }
 
 .date-info {
@@ -119,6 +158,53 @@
   margin-top: 10px;
 }
 
-.rounded-lg {
-  border-radius: 1rem;
+.imageClasses {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: 200px;
+}
+
+
+.btn-final .btn {
+  width: 200px;
+  background-color: #0011A8;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 50px;
+  margin: 50px;
+}
+
+.btn-final .btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* Ajuste do layout */
+.filter-by-tag {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 40px;
+}
+
+.carousel-container {
+  padding: 20px;
+}
+
+.alice-carousel__stage-item {
+  padding-right: 70px;
+}
+.alice-carousel{
+  padding-left: 5vw;
+}
+.alice-carousel__dots{
+  position: relative;
+left: -2vw;
 }
