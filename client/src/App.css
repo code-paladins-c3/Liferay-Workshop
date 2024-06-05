@@ -373,9 +373,11 @@ code {
   margin: 5%;
 }
 
+
+
 .card {
-  width: 400px;
-  height: 300px;
+  width: 15vw;
+  height: 10vh;
   border:  7px solid #D3D3D3;
   border-radius: 20px;
   align-self: center;
@@ -539,4 +541,144 @@ code {
 .alice-carousel__dots{
   position: relative;
 left: -2vw;
+}
+
+.editProfile-Profile {
+  display: flex;
+  margin-left: 4%;
+  border: 5px solid #d9d9d9;
+  border-radius: 15px;
+  width: 90vw;
+  height: 85vh;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+.structure-Profile {
+  margin-right: 5%;
+  flex: 1;
+  position: relative;
+}
+
+.editarPerfil-Profile {
+  position: absolute;
+  top: 1%;
+  left: 0;
+}
+
+.avatar-Profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 20%;
+  margin-left: 10%;
+  margin-top: 30%;
+}
+
+.form-Profile {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  
+}
+
+.form-group-Profile {
+  width: 70%;
+  margin: 0 auto;
+  
+  
+}
+
+.profileInput-Profile{
+  background-color: #a9a7a7;
+  border-radius: 20px;
+  border: none;
+  width: 40vw;
+  height: 4vh;
+  text-decoration: bold 10px black;
+}
+
+.boxForm-Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: 100%;
+  
+}
+
+.boxForm-Profile > input,
+.boxForm-Profile > [type="email"],
+.boxForm-Profile > [type="text"] {
+  
+  width: 100%;
+  padding: 10px;
+  margin-top: 1.5vh;
+  margin-bottom: 2vh;
+  display: inline-block;
+  border: none;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.boxForm-Profile > button,
+.boxForm-Profile > [type="submit"] {
+  width: 20%;
+  background-color: #0011A8;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.skillTag-Profile {
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid blue;
+  color: blue;
+  border-radius: 12px;
+  margin: 5px;
+  position: relative;
+}
+
+.skillTag-Profile .removeSkill-Profile {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: none;
+  color: rgb(31, 30, 30);
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.desktop-only-Profile {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .desktop-only-Profile {
+    display: block;
+    display: inline-block;
+    display: flex;
+  }
+}
+
+.button-Profile {
+  width: 200px;
+  height: 50px;
+  background-color: #0011A8;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin: 20px;
+  transition: background-color 0.3s ease;
 }
