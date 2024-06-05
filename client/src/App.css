@@ -1,102 +1,26 @@
-body {
-  margin: 0;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #F5F5F5;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* button {
-  background-color: #0011a8;
-  color: white;
-  width: 10vw;
-  height: 5vh;
-  border-radius: 20px;
-  border: none;
-} */
-
-.welcomeBoard {
+.editProfile-Profile {
   display: flex;
-  margin-top: 20vh;
-  
-}
-.welcomeBoard  #backgroundWelcome{
-  position: absolute;
-  width: 35vw;
+  margin-left: 4%;
+  border: 5px solid #d9d9d9;
+  border-radius: 15px;
+  width: 90vw;
   height: 85vh;
-  margin: -10vh 6vw;
-}
-.welcomePhrase{
-  position: absolute;
-  color: #ffffff;
-  width: 40vw;
-  margin: 0 17vw;
-  margin-top: 25vh;
-}
-.loginForm {
-  width: 20vw; /* Original form width */
-  height: 5vh;
-  padding: 20px;
-  border-radius: 5px;
-  position: absolute;
-  right:20vw;
-  top: 40vh;
-}
-
-
-.loginForm input[type="email"], .loginForm input[type="password"] {
-  width: 100%; /* This will make the input fields occupy the entire width of the form */
-  padding: 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #4285F4;
-  border-radius: 4px;
+  padding: 2%;
   box-sizing: border-box;
-  background-color: #fff;
 }
 
-.buttonPlace .buttonLogin {
+.structure-Profile {
+  margin-right: 5%;
+  flex: 1;
   position: relative;
-  left:1.5vw;
-  width: 8vw;
-  background-color: #0011A8;
-  color: #FFFFFF;
-  font-size: 15px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  margin: 20px;
-  padding: 15px , 11px;
-  transition: background-color 0.3s ease;
 }
-.Forgot {
-  background:none;
-  position: relative;
-  left: 0vw;
-  width: 8vw; 
-  color: #4285F4;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  padding: 15px , 11px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-}
-#logoPosition{
-  width: 100px;
-  height: 100px;
+
+.editarPerfil-Profile {
   position: absolute;
-  right: 28vw;
-  top:20vh;
+  top: 10%;
+  left: 0;
 }
+
 
 
 
@@ -112,53 +36,65 @@ code {
 }
 .structure{
   margin: 3%;
-}
-.avatar {
-  position: relative;
-  left: 20%;
-  top: 10%;
-  width: 450px;
-  height:450px;
-  border-radius: 100%;
+
+.avatar-Profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 20%;
 
 }
-.form{
-  position: absolute;
-  right: 0%;
-  top: 30%;
-  width: 45vw;
-  height: 25vh;
-}
-.form-group{ 
-  position: relative ;
-  display:grid;
- 
-  right: 3vw;
-}
 
-.boxForm {
+.form-Profile {
+  flex: 2;
   display: flex;
-  flex-direction: column;
-  justify-content:baseline;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-  padding-left: 20px;
+  align-items: center;
   
 }
-.boxForm > input,[type="email"],[type="text"]{
-  background-color: #d9d9d9;
-  width: 80%;
+
+.form-group-Profile {
+  width: 70%;
+  margin: 0 auto;
+  
+  
+}
+
+.profileInput-Profile{
+  background-color: #a9a7a7;
+  border-radius: 20px;
+  border: none;
+  width: 40vw;
+  height: 4vh;
+  text-decoration: bold 10px black;
+}
+
+.boxForm-Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: 100%;
+  
+}
+
+.boxForm-Profile > input,
+.boxForm-Profile > [type="email"],
+.boxForm-Profile > [type="text"] {
+  
+  width: 100%;
   padding: 10px;
-  margin-top:1.5vh;
+  margin-top: 1.5vh;
   margin-bottom: 2vh;
   display: inline-block;
   border: none;
-  border-radius: 12px;
+  border-radius: 20px;
   box-sizing: border-box;
 }
-.boxForm> button, [type="submit"]{
-  position: relative; ;
-  left: 60%;
+
+.boxForm-Profile > button,
+.boxForm-Profile > [type="submit"] {
   width: 20%;
   background-color: #0011A8;
   color: white;
@@ -167,188 +103,43 @@ code {
   border: none;
   border-radius: 20px;
   cursor: pointer;
+  align-self: flex-end;
 }
-  
-.desktop-only {
+
+.skillTag-Profile {
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid blue;
+  color: blue;
+  border-radius: 12px;
+  margin: 5px;
+  position: relative;
+}
+
+.skillTag-Profile .removeSkill-Profile {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: none;
+  color: rgb(31, 30, 30);
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.desktop-only-Profile {
   display: none;
 }
 
 @media screen and (min-width: 768px) {
-  .desktop-only {
+  .desktop-only-Profile {
     display: block;
     display: inline-block;
     display: flex;
   }
 }
 
-
-/* EventCreate */
-
-
-.container-EventCreate {
-    margin: 100px;
-    width: 90%;
-    padding-right: 100px;
-    padding-right: 100px;
-    height: 100%;
-    flex-shrink: 0;
-    border-radius: 67px;
-    background: #fff;
-    box-shadow: 0px 0px 20px 0px rgba(87, 86, 86, 0.788);
-    
-}
-
-.texto_criarEvento {
-    padding: 50px;
-    text-align: left;
-    display: inline-block;
-    height: 46px;
-}
-
-.form-group-EventCreate {
-    padding-inline-start: 20%;
-    padding-bottom: 50px;
-    margin-bottom: 10px;
-}
-
-.selectSkillEventCreate {
-  
-}
-
-.label-EventCreate {
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.input-EventCreate {
-    width: calc(80% - 22px);
-    padding: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    transition: background-color 0.3s ease;
-}
-
-.input-EventCreate:focus {
-    background-color: #e0e0e0;
-    outline: none;
-}
-
-.desciption {
-    width: calc(100% - 22px);
-    padding: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    resize: vertical;
-    transition: background-color 0.3s ease;
-}
-
-.desciption:focus,
-.desciption:hover {
-    background-color: #e0e0e0;
-}
-
-.button-container {
-    text-align: right;
-}
-
-.button-containerEventCreate {
-    width: 200px;
-    background-color: #0011A8;
-    color: #FFFFFF;
-    font-size: 20px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 30px;
-    overflow: hidden;
-    height: 50px;
-    margin: 50px;
-}
-
-.button-containerEventCreate:hover {
-    background-color: #0025FF;
-}
-
-.cancel-button {
-    width: 120px;
-    background-color: #4285f4;
-    color: #FFFFFF;
-    font-size: 8px;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 15px;
-    overflow: hidden;
-    height: 20px;
-    margin: 20px;
-}
-
-.input-photo-EventCreate {
-    width: calc(80% - 22px);
-    padding: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    transition: background-color 0.3s ease;
-}
-
-
-
-/* First access CSS */
-
-/* Container */
-.contFirstAsccess {
-  max-width: 600px;
-  width: 100%;
-  padding: 50px;
-  border-radius: 20px; /* Reduced border-radius */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-
-}
-
-
-
-/* Logo */
-.logofirstAsccess {
-  max-width: 200px;
-  max-height: 80px;
-  width: auto;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-/* Text Topic */
-.textTopic {
-  padding: 20px;
-  font-size: 32px;
-  margin-top: 20px; /* Reduced margin-top */
-  margin-bottom: 20px;
-}
-
-/* Select Dropdown */
-.selectFirstAsccess {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #f2f2f2; /* Added border for clarity */
-  border-radius: 5px;
-  margin-bottom: 20px;
-  font-size: large;
-}
-
-/* Button */
-.buttonFirstAccess {
+.button-Profile {
   width: 200px;
   height: 50px;
   background-color: #0011A8;
@@ -361,6 +152,7 @@ code {
   margin: 20px;
   transition: background-color 0.3s ease;
 }
+
 
 .buttonFirstAccess:hover {
   background-color: #0025FF;
@@ -540,3 +332,4 @@ code {
   position: relative;
 left: -2vw;
 }
+
