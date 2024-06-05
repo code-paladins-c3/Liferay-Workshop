@@ -2,7 +2,7 @@
 
 body {
   background-color: #fff;
-  margin-top: 8%;
+  margin: 5%;
   overflow-x: hidden;
 }
 
@@ -23,41 +23,8 @@ body {
   }
 
 
-  .alice-carousel__prev-btn img,
-  .alice-carousel__next-btn img {
-    width: 10%;
-    height: 10%;
-    object-fit: contain;
-    
-  }
-  
-  .alice-carousel__prev-btn,
-  .alice-carousel__next-btn {
-    position: fixed;
-  }
-  
-  .alice-carousel__prev-btn {
-    position: absolute;
-    object-fit: contain;
-    top: 10vh;
-    left: -10.5vw;
-    margin: 0;;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-  }
-  
-  .alice-carousel__next-btn {
-    object-fit: contain;
-    position: absolute;
-    width: 10px;
-    top: 10vh;
-    right: -10.5vw;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-  }
 
+  
  
 
 
@@ -94,7 +61,7 @@ body {
 .events-grid {
   display: grid;  
   justify-content: center;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 5rem;
   padding: 5rem;
   margin-top: -4rem;
