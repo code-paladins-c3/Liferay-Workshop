@@ -106,7 +106,7 @@ const AllEvents = () => {
 
   return (
     <>
-      <Navbar />
+      
       <div className="container-allevents">
 
         <div className="">
@@ -155,14 +155,13 @@ const AllEvents = () => {
 
         </div>
 
-        <div className='filter-AllEvents-modified'>
-          <span>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
-          <Select
-            value={selectedTag}
-            onChange={handleTagChange}
-            options={tags}
-          />
-        </div>
+        <div className="filter-by-tag">
+        <span className='name-tag'>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
+        <Select className='select-tag' 
+        value={selectedTag} 
+        onChange={handleTagChange} 
+        options={tags} />
+      </div>
 
         <div className="events-grid">
           {filteredEvents.map((event, index) => (
@@ -174,11 +173,15 @@ const AllEvents = () => {
                 date={event.date}
                 title={event.name}
                 description={event.description}
+                id={event.id}
               />
             </div>
           ))}
         </div>
       </div>
+
+      <Navbar />
+
     </>
   );
 };
