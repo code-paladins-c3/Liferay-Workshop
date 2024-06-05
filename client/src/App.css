@@ -98,6 +98,10 @@ code {
   top:20vh;
 }
 
+
+
+
+/* Profile  ---------------------------*/
 .editProfile {
   display: inline-flex;
   margin-left: 4%;
@@ -362,3 +366,177 @@ code {
   background-color: #0025FF;
 }
 
+/* Estilos para o EventCard */
+
+
+.EventL-conteiner {
+  margin: 5%;
+}
+
+.card {
+  width: 400px;
+  height: 300px;
+  border:  7px solid #D3D3D3;
+  border-radius: 20px;
+  align-self: center;
+  text-decoration: none;
+
+ 
+}
+
+
+.card:hover {
+  box-shadow: 0 8px 16px rgb(6, 156, 237);
+
+}
+.alice-carousel__prev-btn img,
+.alice-carousel__next-btn img {
+  width: 10%;
+  height: 10%;
+  object-fit: contain;
+  
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  position: fixed;
+}
+
+.alice-carousel__prev-btn {
+  position: absolute;
+  object-fit: contain;
+  top: 10vh;
+  left: -10.5vw;
+  margin: 0;;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
+.alice-carousel__next-btn {
+  object-fit: contain;
+  position: absolute;
+  width: 10px;
+  top: 10vh;
+  right: -10.5vw;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
+/* @media (max-width: 1024px) {
+  .alice-carousel__prev-btn {
+    width: 20px;
+    left: -110px;
+    
+  }
+
+
+  .alice-carousel__next-btn {
+    width: 20px;
+    right: -110px;
+  }
+}
+
+
+@media (min-width: 2560px) {
+  .alice-carousel__prev-btn {
+    width: 20px;
+    left: -300px;
+    
+  }
+
+  
+
+  .alice-carousel__next-btn {
+    position: relative;
+    width: 20px;
+    right: 1vw;
+  }
+} */
+
+
+.dayCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0011A8;
+  text-align: left;
+}
+
+.titleCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+}
+
+.text-sm {
+  font-size: 0.900rem;
+}
+
+.date-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-info {
+  margin-top: 10px;
+}
+
+.btn-final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageClasses {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: 200px;
+}
+
+
+.btn-final .btn {
+  width: 200px;
+  background-color: #0011A8;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 50px;
+  margin: 50px;
+}
+
+.btn-final .btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* Ajuste do layout */
+.filter-by-tag {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 40px;
+}
+
+.carousel-container {
+  padding: 20px;
+}
+
+.alice-carousel__stage-item {
+  padding-right: 70px;
+}
+.alice-carousel{
+  padding-left: 5vw;
+}
+.alice-carousel__dots{
+  position: relative;
+left: -2vw;
+}
