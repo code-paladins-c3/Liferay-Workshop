@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './EventsList.css';
+// import './EventsList.css';
 import Select from 'react-select';
 import supabase from '../../config/supabaseClient';
 import SessionContext from '../../api/context/SessionContext';
