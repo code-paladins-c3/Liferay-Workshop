@@ -562,7 +562,7 @@ left: -2vw;
 
 .editarPerfil-Profile {
   position: absolute;
-  top: 10%;
+  top: 1%;
   left: 0;
 }
 
@@ -572,6 +572,8 @@ left: -2vw;
   border-radius: 50%;
   object-fit: cover;
   margin-top: 20%;
+  margin-left: 10%;
+  margin-top: 30%;
 }
 
 .form-Profile {
