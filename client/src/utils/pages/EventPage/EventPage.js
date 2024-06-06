@@ -35,7 +35,7 @@ const EventPage = () => {
 
     const handleButtonClick = () => {
         setShowPopup(true);
-        
+
     };
 
     if (!event) {
@@ -49,61 +49,85 @@ const EventPage = () => {
     return (
 
         <>
-        <Navbar/>
-        <div className="event-page">
-            <img src={event.photo} alt="Event" className="event-image" />
-            <div className="event-content">
-                <div className="event-left">
-                    <h1 className="event-title">{event.name}</h1>
-                    <h2 className="event-Description-title">Descrição do Evento:</h2>
 
-                    <p className="event-description">{event.description}</p>
+            <div className="event-page">
+
+                <div className="event-image" >
+
+                    <div className="event-image-background">
+                        <img src={event.photo} alt="Event" />
+                    </div>
+                    <div className="event-image-overlay">
+                        <img src={event.photo} alt="Event" className="event-image-top" />
+
+                    </div>
                 </div>
-                <div className="event-right">
-                    <div className="event-tags">
-                        <h2>TAG:</h2>
-                        <div className="tags">
-                            {tags.map((tag, index) => (
-                                <div className="tag" key={index}>{tag.trim()}</div>
+
+
+                <div className="event-content">
+                    <div className="event-left">
+                        <h1 className="event-title">{event.name}</h1>
+                        <h2 className="event-Description-title">Descrição do Evento:</h2>
+
+                        <p className="event-description">
+                            {event.description.split('\n').map((line, index) => (
+                                <span key={index}>
+                                    {line}
+                                    <br />
+                                </span>
                             ))}
-                        </div>
+                        </p>
                     </div>
-                    <div className="event-details">
-                        <h2>Detalhes:</h2>
-                        <div className="detail">
-                            <img src={CalendarIcon} alt="Date" />
-                            <span>{event.date}</span>
+                    <div className="event-right">
+                        <div className="event-tags">
+                            <h2 className='tag-name'>TAG:</h2>
+                            <div className="tags">
+                                {tags.map((tag, index) => (
+                                    <div className="tag" key={index}>{tag.trim()}</div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="detail">
-                            <img src={ClockIcon} alt="Time" />
-                            <span>{event.time}</span>
+                        <div className="event-details">
+                            <h2>Detalhes:</h2>
+                            <div className="detail">
+                                <img src={CalendarIcon} alt="Date" />
+                                <span>{event.date}</span>
+                            </div>
+                            <div className="detail">
+                                <img src={ClockIcon} alt="Time" />
+                                <span>{event.time}</span>
+                            </div>
+                            <div className="detail">
+                                <img src={LocationIcon} alt="Location:" />
+                                <span>Liferay, Recife-PE</span>
+                            </div>
+                            <div className="detail">
+                                <img src={MaxPeopleIcon} alt="Max People" />
+                                <span>{event.maxparticipants}</span>
+                            </div>
                         </div>
-                        <div className="detail">
-                            <img src={LocationIcon} alt="Location:" />
-                            <span>Liferay, Recife-PE</span>
-                        </div>
-                        <div className="detail">
-                            <img src={MaxPeopleIcon} alt="Max People" />
-                            <span>{event.maxparticipants}</span>
-                        </div>
+                        <button className="subscribe-button" onClick={handleButtonClick}>Inscrever-se</button>
+                        {showPopup && (
+                            <div className="popup">
+                                <img src={Verify} alt="Verify" className='imgVerify' />
+                                <h2 className='Inscricao-Text'>Inscrição realizada com sucesso!</h2>
+                                <br></br>
+                                <br></br>
+                                <br></br>
+                                <a href={googleCalendarLink} target="_blank" rel="noopener noreferrer">
+                                    <button className='btn-saveCalendar'>Salvar no google Calendar  <img src={GoogleCalendar} alt="Save to Google Calendar" className='imgCalendar' /></button>
+                                </a>
+                            </div>
+                        )}
                     </div>
-                    <button className="subscribe-button" onClick={handleButtonClick}>Inscrever-se</button>
-                    {showPopup && (
-                        <div className="popup">
-                            <img src={Verify} alt="Verify" className='imgVerify' />
-                            <h2 className='Inscricao-Text'>Inscrição realizada com sucesso!</h2>
-                            <br></br>
-                            <br></br>
-                            <br></br>
-                            <a href={googleCalendarLink} target="_blank" rel="noopener noreferrer">
-                                <button className='btn-saveCalendar'>Salvar no google Calendar  <img src={GoogleCalendar} alt="Save to Google Calendar" className='imgCalendar' /></button>
-                            </a>
-                        </div>
-                    )}
                 </div>
+
             </div>
 
-        </div>
+
+            <Navbar />
+
+
         </>
     );
 };
