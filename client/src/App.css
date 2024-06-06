@@ -11,22 +11,32 @@ code {
     monospace;
 }
 
+/* button {
+  background-color: #0011a8;
+  color: white;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 20px;
+  border: none;
+} */
+
 .welcomeBoard {
   display: flex;
-  margin-top: 20px;
-  margin-left: 100px;
+  margin-top: 20vh;
+  
 }
-.welcomeBoard > #backgroundWelcome{
+.welcomeBoard  #backgroundWelcome{
   position: absolute;
-  width: 40vw;
-  height: 95vh;
+  width: 35vw;
+  height: 85vh;
+  margin: -10vh 6vw;
 }
 .welcomePhrase{
   position: absolute;
   color: #ffffff;
   width: 40vw;
-  margin-left: 17vw;
-  margin-top: 40vh;
+  margin: 0 17vw;
+  margin-top: 25vh;
 }
 .loginForm {
   width: 20vw; /* Original form width */
@@ -88,14 +98,20 @@ code {
   top:20vh;
 }
 
+
+
+
+/* Profile  ---------------------------*/
 .editProfile {
   display: inline-flex;
-  margin: 30px;
+  margin-left: 4%;
   border: 5px solid #d9d9d9;
   border-radius: 15px;
-  padding: 20px;
-  width: 92vw;
-  height: 87vh;
+  width: 90vw;
+  height: 85vh;
+}
+.structure{
+  margin: 3%;
 }
 .avatar {
   position: relative;
@@ -107,33 +123,42 @@ code {
 
 }
 .form{
-  position: relative;
-  left: 20%;
-  top: 15%;
+  position: absolute;
+  right: 0%;
+  top: 30%;
+  width: 45vw;
+  height: 25vh;
 }
+.form-group{ 
+  position: relative ;
+  display:grid;
+ 
+  right: 3vw;
+}
+
 .boxForm {
   display: flex;
   flex-direction: column;
   justify-content:baseline;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  border-radius: 10px;
-  width: 45vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding-left: 20px;
+  
 }
 .boxForm > input,[type="email"],[type="text"]{
   background-color: #d9d9d9;
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  margin: 20px -2px;
+  margin-top:1.5vh;
+  margin-bottom: 2vh;
   display: inline-block;
   border: none;
   border-radius: 12px;
   box-sizing: border-box;
 }
 .boxForm> button, [type="submit"]{
-  position: relative;
-  left: 80%;
+  position: relative; ;
+  left: 60%;
   width: 20%;
   background-color: #0011A8;
   color: white;
@@ -341,3 +366,319 @@ code {
   background-color: #0025FF;
 }
 
+/* Estilos para o EventCard */
+
+
+.EventL-conteiner {
+  margin: 5%;
+}
+
+
+
+.card {
+  width: 15vw;
+  height: 10vh;
+  border:  7px solid #D3D3D3;
+  border-radius: 20px;
+  align-self: center;
+  text-decoration: none;
+
+ 
+}
+
+
+.card:hover {
+  box-shadow: 0 8px 16px rgb(6, 156, 237);
+
+}
+.alice-carousel__prev-btn img,
+.alice-carousel__next-btn img {
+  width: 10%;
+  height: 10%;
+  object-fit: contain;
+  
+}
+
+.alice-carousel__prev-btn,
+.alice-carousel__next-btn {
+  position: fixed;
+}
+
+.alice-carousel__prev-btn {
+  position: absolute;
+  object-fit: contain;
+  top: 10vh;
+  left: -10.5vw;
+  margin: 0;;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
+.alice-carousel__next-btn {
+  object-fit: contain;
+  position: absolute;
+  width: 10px;
+  top: 10vh;
+  right: -10.5vw;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+}
+
+/* @media (max-width: 1024px) {
+  .alice-carousel__prev-btn {
+    width: 20px;
+    left: -110px;
+    
+  }
+
+
+  .alice-carousel__next-btn {
+    width: 20px;
+    right: -110px;
+  }
+}
+
+
+@media (min-width: 2560px) {
+  .alice-carousel__prev-btn {
+    width: 20px;
+    left: -300px;
+    
+  }
+
+  
+
+  .alice-carousel__next-btn {
+    position: relative;
+    width: 20px;
+    right: 1vw;
+  }
+} */
+
+
+.dayCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0011A8;
+  text-align: left;
+}
+
+.titleCard {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+}
+
+.text-sm {
+  font-size: 0.900rem;
+}
+
+.date-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-info {
+  margin-top: 10px;
+}
+
+.btn-final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageClasses {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: 200px;
+}
+
+
+.btn-final .btn {
+  width: 200px;
+  background-color: #0011A8;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 50px;
+  margin: 50px;
+}
+
+.btn-final .btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* Ajuste do layout */
+.filter-by-tag {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 40px;
+}
+
+.carousel-container {
+  padding: 20px;
+}
+
+.alice-carousel__stage-item {
+  padding-right: 70px;
+}
+.alice-carousel{
+  padding-left: 5vw;
+}
+.alice-carousel__dots{
+  position: relative;
+left: -2vw;
+}
+
+.editProfile-Profile {
+  display: flex;
+  margin-left: 4%;
+  border: 5px solid #d9d9d9;
+  border-radius: 15px;
+  width: 90vw;
+  height: 85vh;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+.structure-Profile {
+  margin-right: 5%;
+  flex: 1;
+  position: relative;
+}
+
+.editarPerfil-Profile {
+  position: absolute;
+  top: 1%;
+  left: 0;
+}
+
+.avatar-Profile {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 20%;
+  margin-left: 10%;
+  margin-top: 30%;
+}
+
+.form-Profile {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  
+}
+
+.form-group-Profile {
+  width: 70%;
+  margin: 0 auto;
+  
+  
+}
+
+.profileInput-Profile{
+  background-color: #a9a7a7;
+  border-radius: 20px;
+  border: none;
+  width: 40vw;
+  height: 4vh;
+  text-decoration: bold 10px black;
+}
+
+.boxForm-Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  width: 100%;
+  
+}
+
+.boxForm-Profile > input,
+.boxForm-Profile > [type="email"],
+.boxForm-Profile > [type="text"] {
+  
+  width: 100%;
+  padding: 10px;
+  margin-top: 1.5vh;
+  margin-bottom: 2vh;
+  display: inline-block;
+  border: none;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.boxForm-Profile > button,
+.boxForm-Profile > [type="submit"] {
+  width: 20%;
+  background-color: #0011A8;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.skillTag-Profile {
+  display: inline-block;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid blue;
+  color: blue;
+  border-radius: 12px;
+  margin: 5px;
+  position: relative;
+}
+
+.skillTag-Profile .removeSkill-Profile {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: none;
+  color: rgb(31, 30, 30);
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.desktop-only-Profile {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .desktop-only-Profile {
+    display: block;
+    display: inline-block;
+    display: flex;
+  }
+}
+
+.button-Profile {
+  width: 200px;
+  height: 50px;
+  background-color: #0011A8;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin: 20px;
+  transition: background-color 0.3s ease;
+}

@@ -1,14 +1,18 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './EventsList.css';
+import { useNavigate, Link } from 'react-router-dom';
+// import './EventsList.css';
 import Select from 'react-select';
 import supabase from '../../config/supabaseClient';
 import SessionContext from '../../api/context/SessionContext';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import SetaDireita from './setaDireita.png';
+import SetaEsquerda from './setaEsquerda.png';
 
 const eventCardClasses = "min-w-max rounded-lg shadow-lg";
-const imageClasses = "rounded-t-lg";
 
-const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
+
+const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description, id }) => {
   const formatDate = (dateStr) => {
     const dateObj = new Date(dateStr);
     const day = dateObj.getDate();
@@ -19,20 +23,36 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description }) => {
   const { day, month } = formatDate(date);
 
   return (
-    <div className={`bg-${bgColor} text-white ${eventCardClasses}`}>
-      <img src={imgSrc} alt={imgAlt} className={imageClasses} />
-      <div className="p-4 flex flex-col">
-        <div className="date-info mb-2">
-          <div className="dayCard">{day}</div>
-          <div className="monthCard">{month}</div>
-        </div>
-        <div className="event-info">
-          <div className="titleCard">{title}</div>
-          <div className="text-sm">{description}</div>
+    <Link to={`/eventpage/${id}`}>
+      <div className={`bg-${bgColor} text-white ${eventCardClasses} card`}>
+        <div className='margin-Carr'>
+          <img src={imgSrc} alt={imgAlt} className='imageClasses' />
+          <div className="p-4 flex flex-col">
+            <div className="date-info mb-2">
+              <div className="dayCard">{day}</div>
+              <div className="monthCard">{month}</div>
+            </div>
+            <div className="event-info">
+              <div className="titleCard">{title}</div>
+              <div className="text-sm">{description}</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
+
   );
+};
+
+const handleOnResize = (event) => {
+  const { innerWidth: width } = window;
+  let itemsToShow = 1;
+
+  if (width >= 1024) {
+    itemsToShow = 2;
+  }
+
+  return { items: itemsToShow };
 };
 
 const EventList = () => {
@@ -79,26 +99,6 @@ const EventList = () => {
     fetchEvents();
   }, []);
 
-  const handleNextSlide = () => {
-    if (currentIndex < filteredEvents.length - 1) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-      eventListRef.current.scrollBy({
-        left: eventListRef.current.clientWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const handlePrevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
-      eventListRef.current.scrollBy({
-        left: -eventListRef.current.clientWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const handleTagChange = (selectedOption) => {
     setSelectedTag(selectedOption);
     if (selectedOption.value === 'all') {
@@ -109,37 +109,61 @@ const EventList = () => {
     }
   };
 
-  
+
 
   return (
-    <div>
+    <div className='EventL-conteiner'>
       <div className="filter-by-tag">
         <span className='name-tag'>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
         <Select className='select-tag' value={selectedTag} onChange={handleTagChange} options={tags} />
       </div>
-      <div className="flex items-center">
-        <button onClick={handlePrevSlide} className="coruselBtnPrevious">
-          &lt;
-        </button>
-        <div className="flex overflow-x-hidden space-x-4 p-4" ref={eventListRef}>
-          {filteredEvents.map((event, index) => (
-            <EventCard
-              key={index}
-              bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
-              imgSrc={event.photo}
-              imgAlt={event.name}
-              date={event.date}
-              title={event.name}
-              description={event.description}
-            />
-          ))}
-        </div>
-        <button onClick={handleNextSlide} className="coruselBtnNext">
-          &gt;
-        </button>
+      <div className="">
+        <AliceCarousel
+          mouseTracking
+          keyboardNavigation
+          items={
+            filteredEvents.map((event, index) => (
+
+              <EventCard
+                bgColor={event.theme.toLowerCase().replace(/\s+/g, '-')}
+                imgSrc={event.photo}
+                imgAlt={event.name}
+                date={event.date}
+                title={event.name}
+                description={event.description}
+                className={'event-card'}
+                id={event.id}
+              />
+
+            ))}
+          responsive={{
+            100: { items: 1, },
+            256: { items: 1, },
+            300: { items: 1, },
+            512: { items: 2, },
+            900: { items: 2, },
+            1024: { items: 3, },
+            1920: { items: 4, },
+            2560: { items: 5, },
+
+          }}
+          infinite
+          onResized={handleOnResize}
+          renderPrevButton={() =>
+            <button className="alice-carousel__prev-btn">
+              <img src={SetaEsquerda} alt="Previous" />
+            </button>
+          }
+          renderNextButton={() =>
+            <button className="alice-carousel__next-btn">
+              <img src={SetaDireita} alt="Next" />
+            </button>
+          }
+        />
+
       </div>
       <div className="btn-final">
-        <button  onClick={navigateToCreateEvent} className="btn btn-primary mr-2">Criar Eventos</button>
+        <button onClick={navigateToCreateEvent} className="btn btn-primary mr-2">Criar Eventos</button>
         <button onClick={navigateToAllEvents} className="btn btn-outline-primary">Todos os Eventos</button>
       </div>
     </div>
