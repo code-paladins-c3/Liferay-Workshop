@@ -157,6 +157,7 @@
 
 .event-details img {
     margin-right: 10px;
+    max-width: 37px;
 }
 
 .subscribe-button {
