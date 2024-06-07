@@ -198,7 +198,7 @@ const EventCreate = () => {
                         <textarea id="description" value={description} onChange={handleDescriptionChange} className="input-EventCreate" rows="4"></textarea>
                     </div>
                     <div className="button-container">
-                        <button className='buttonFirstAccess' id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
+                        <button className="button-Create" id="button-EventCreate" type="button" onClick={handleEventCreate}>Criar Evento</button>
                     </div>
                 </form>
             </div>

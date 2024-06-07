@@ -234,22 +234,24 @@ code {
     text-align: left;
     display: inline-block;
     height: 46px;
+    font-family: sorce-sans-pro, sans-serif;
 }
 
 .form-group-EventCreate {
     padding-inline-start: 20%;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
 .selectSkillEventCreate {
-  
+  width:77%
 }
 
 .label-EventCreate {
     font-size: 16px;
     margin-bottom: 5px;
     display: block;
+    
 }
 
 .input-EventCreate {
@@ -285,6 +287,25 @@ code {
 
 .button-container {
     text-align: right;
+    font-family: sorce-sans-pro, sans-serif;
+    position: relative;
+    right: 12vw;
+
+    
+}
+
+.button-Create{
+  width: 200px;
+  height: 40px;
+  background-color: #0011A8;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 20px;
+  transition: background-color 0.3s ease;
 }
 
 .button-containerEventCreate {
@@ -296,7 +317,6 @@ code {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 30px;
     overflow: hidden;
     height: 50px;
     margin: 50px;
@@ -712,4 +732,8 @@ left: -2vw;
   border-radius: 30px;
   margin: 20px;
   transition: background-color 0.3s ease;
+}
+
+.EventL-conteiner{
+  margin-top: 20vh;
 }
