@@ -466,7 +466,8 @@ code {
   color: #000;
   text-align: left;
   display: inline-block;
-  margin-top: 10vh;
+  margin-top: 3vh;
+  margin-left: 5%;
   }
 
 .line-div {
@@ -476,6 +477,7 @@ code {
   box-sizing: border-box;
   height: 2px;
   margin-bottom: 10vh;
+  margin-left: 5%;
   }
 
 .alice-carousel__prev-btn,
@@ -580,6 +582,7 @@ code {
   align-items: center;
   justify-content: left;
   margin-bottom: 40px;
+  margin-left: 5%;
 }
 
 .carousel-container {
