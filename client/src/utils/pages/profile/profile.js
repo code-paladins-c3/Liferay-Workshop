@@ -225,7 +225,7 @@ function Profile() {
                                 />
                             </label>
 
-                            <div>
+                            <div className='area-inti-profile'>
                                 <h4>Área de Interesse</h4>
                                 <div>
                                     {profile.interest_area.map(skill => (
@@ -242,7 +242,7 @@ function Profile() {
                                 </div>
                             </div>
 
-                            <div>
+                            <div className='area-inti-profile'>
                                 <h4>Área de Conhecimento</h4>
                                 <div>
                                     {profile.knowledge_area.map(skill => (
