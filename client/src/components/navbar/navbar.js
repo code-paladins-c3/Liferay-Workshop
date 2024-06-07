@@ -4,6 +4,7 @@ import supabase from "../../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
 import './navbar.css';
 import logo from './Liferay-logo-full-color-2x 2.png';
+import Home from './home.png';
 import userPlaceholder from './user.png';
 
 function Navbar() {
@@ -95,25 +96,32 @@ function Navbar() {
         <img src={logo} alt="Liferay" />
       </div>
 
-      <div className="nav__search-container">
-        <input
-          type="text"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="nav__search"
-        />
-      </div>
+
+        <input type="search" className="nav__search" placeholder="Search..." />
 
       <ul className="nav__menu">
         <li className="nav__link"></li>
       </ul>
 
+
+
       <div className="App">
+
+
         <div className='menu-container' ref={menuRef}>
+
+
+           <div className='Home-NavBar'>
+            <img src={Home} alt="Home" onClick={handleMainEvents} />
+          </div>
+     
+
           <div className='menu-trigger' onClick={() => { setOpen(!open) }}>
+
             <img src={profile.avatar_url || userPlaceholder} alt="User Avatar" />
           </div>
+
+
 
           <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`} >
             <h3 className='menu-trigger-Name'>{profile.username || 'Carregando...'}</h3>

@@ -234,22 +234,24 @@ code {
     text-align: left;
     display: inline-block;
     height: 46px;
+    font-family: sorce-sans-pro, sans-serif;
 }
 
 .form-group-EventCreate {
     padding-inline-start: 20%;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     margin-bottom: 10px;
 }
 
 .selectSkillEventCreate {
-  
+  width:77%
 }
 
 .label-EventCreate {
     font-size: 16px;
     margin-bottom: 5px;
     display: block;
+    
 }
 
 .input-EventCreate {
@@ -285,6 +287,25 @@ code {
 
 .button-container {
     text-align: right;
+    font-family: sorce-sans-pro, sans-serif;
+    position: relative;
+    right: 12vw;
+
+    
+}
+
+.button-Create{
+  width: 200px;
+  height: 40px;
+  background-color: #0011A8;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 20px;
+  transition: background-color 0.3s ease;
 }
 
 .button-containerEventCreate {
@@ -296,7 +317,6 @@ code {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    border-radius: 30px;
     overflow: hidden;
     height: 50px;
     margin: 50px;
@@ -397,7 +417,7 @@ code {
   background-color: #0025FF;
 }
 
-/* Estilos para o EventCard */
+/* Estilos para o EventList  -----------------  */
 
 
 .EventL-conteiner {
@@ -413,8 +433,6 @@ code {
   border-radius: 20px;
   align-self: center;
   text-decoration: none;
-
- 
 }
 
 
@@ -422,6 +440,9 @@ code {
   box-shadow: 0 8px 16px rgb(6, 156, 237);
 
 }
+
+
+
 .alice-carousel__prev-btn img,
 .alice-carousel__next-btn img {
   width: 10%;
@@ -429,6 +450,33 @@ code {
   object-fit: contain;
   
 }
+
+.link-eventlist{
+  text-decoration: none;
+  color: #000;
+
+
+}
+
+.proximos-eventos {
+  width: 20vw;
+  position: relative;
+  font-size: 30px;
+  font-family: 'Source San Pro', monospace;
+  color: #000;
+  text-align: left;
+  display: inline-block;
+  margin-top: 10vh;
+  }
+
+.line-div {
+  width: 20vw;
+  position: relative;
+  border-top: 2px solid #056ad9;
+  box-sizing: border-box;
+  height: 2px;
+  margin-bottom: 10vh;
+  }
 
 .alice-carousel__prev-btn,
 .alice-carousel__next-btn {
@@ -457,43 +505,12 @@ code {
   border: none;
 }
 
-/* @media (max-width: 1024px) {
-  .alice-carousel__prev-btn {
-    width: 20px;
-    left: -110px;
-    
-  }
-
-
-  .alice-carousel__next-btn {
-    width: 20px;
-    right: -110px;
-  }
-}
-
-
-@media (min-width: 2560px) {
-  .alice-carousel__prev-btn {
-    width: 20px;
-    left: -300px;
-    
-  }
-
-  
-
-  .alice-carousel__next-btn {
-    position: relative;
-    width: 20px;
-    right: 1vw;
-  }
-} */
-
-
 .dayCard {
   font-size: 1.5rem;
   font-weight: bold;
   color: #0011A8;
   text-align: left;
+  margin-top: 0.600rem;
 }
 
 .titleCard {
@@ -505,6 +522,12 @@ code {
 
 .text-sm {
   font-size: 0.900rem;
+  white-space: nowrap;  /* Impede que o texto quebre para a próxima linha */
+  overflow: hidden;  /* Esconde qualquer texto que ultrapasse o limite do elemento */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  
 }
 
 .date-info {
@@ -712,4 +735,8 @@ left: -2vw;
   border-radius: 30px;
   margin: 20px;
   transition: background-color 0.3s ease;
+}
+
+.EventL-conteiner{
+  margin-top: 20vh;
 }
