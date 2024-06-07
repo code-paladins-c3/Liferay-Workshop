@@ -23,7 +23,7 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description, id }) =>
   const { day, month } = formatDate(date);
 
   return (
-    <Link to={`/eventpage/${id}`}>
+    <Link className='link-eventlist' to={`/eventpage/${id}`}>
       <div className={`bg-${bgColor} text-white ${eventCardClasses} card`}>
         <div className='margin-Carr'>
           <img src={imgSrc} alt={imgAlt} className='imageClasses' />
@@ -34,7 +34,14 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description, id }) =>
             </div>
             <div className="event-info">
               <div className="titleCard">{title}</div>
-              <div className="text-sm">{description}</div>
+              <div className="text-sm">
+                {description.split('\n').map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -111,8 +118,12 @@ const EventList = () => {
 
 
 
+
   return (
     <div className='EventL-conteiner'>
+
+      <div class="proximos-eventos">Proximos Eventos</div>
+      <div class="line-div"></div>
       <div className="filter-by-tag">
         <span className='name-tag'>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
         <Select className='select-tag' value={selectedTag} onChange={handleTagChange} options={tags} />
@@ -142,7 +153,8 @@ const EventList = () => {
             300: { items: 1, },
             512: { items: 2, },
             900: { items: 2, },
-            1024: { items: 3, },
+            1024: { items: 2, },
+            1090: { items: 2, },
             1920: { items: 4, },
             2560: { items: 5, },
 

@@ -40,9 +40,9 @@
   /* A largura máxima será de 500px */
   padding: 10px;
   border-radius: 25px;
-  border: none;
+  border: 1px solid #d7d7d7;
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat scroll 7px 7px;
-  background-color: #cfcfcf;
+  background-color: none;
   padding-left: 30px;
 }
 
@@ -52,15 +52,18 @@
 
 }
 
+.Home-NavBar{
+  margin-right: 10vh;
+  height: 8vh;
+  margin-top: 8vh;
+  width: 100%
 
 
-.nav__menu {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 3rem;
-  margin-left: 350px;
 }
+
+
+
+
 
 
 .nav_toggler div {
