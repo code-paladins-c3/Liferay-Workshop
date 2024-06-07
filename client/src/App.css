@@ -600,15 +600,17 @@ code {
 left: -2vw;
 }
 
+
+/* profile ------------ */
+
 .editProfile-Profile {
   display: flex;
-  margin-left: 4%;
   border: 5px solid #d9d9d9;
   border-radius: 15px;
   width: 90vw;
-  height: 85vh;
   padding: 2%;
-  box-sizing: border-box;
+  
+  margin-top: 15%;
 }
 
 .structure-Profile {
@@ -637,6 +639,7 @@ left: -2vw;
   flex: 2;
   display: flex;
   align-items: center;
+ 
   
 }
 
@@ -645,15 +648,20 @@ left: -2vw;
   margin: 0 auto;
   
   
+  
 }
 
 .profileInput-Profile{
-  background-color: #a9a7a7;
-  border-radius: 20px;
-  border: none;
+  
+  border-radius: 6px;
+  border: 2px solid rgb(218, 218, 221);
   width: 40vw;
   height: 4vh;
   text-decoration: bold 10px black;
+  background-color: #ffffff;
+  margin-bottom: 10%;
+  
+ 
 }
 
 .boxForm-Profile {
@@ -663,7 +671,10 @@ left: -2vw;
   margin-top: 5vh;
   margin-bottom: 5vh;
   width: 100%;
-  
+}
+
+.area-inti-profile{
+  margin-bottom: 10%;
 }
 
 .boxForm-Profile > input,
@@ -675,7 +686,6 @@ left: -2vw;
   margin-top: 1.5vh;
   margin-bottom: 2vh;
   display: inline-block;
-  border: none;
   border-radius: 20px;
   box-sizing: border-box;
 }
@@ -687,11 +697,14 @@ left: -2vw;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
-  border: none;
   border-radius: 20px;
   cursor: pointer;
   align-self: flex-end;
 }
+
+
+
+
 
 .skillTag-Profile {
   display: inline-block;
@@ -702,6 +715,7 @@ left: -2vw;
   border-radius: 12px;
   margin: 5px;
   position: relative;
+  
 }
 
 .skillTag-Profile .removeSkill-Profile {
@@ -727,17 +741,19 @@ left: -2vw;
 }
 
 .button-Profile {
-  width: 200px;
-  height: 50px;
   background-color: #0011A8;
   color: #FFFFFF;
+  width: 10vw;
   font-size: 20px;
+  font-family: 'source sans pro', sans-serif;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 4px;
   margin: 20px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  padding: 20px
+  
 }
 
 .EventL-conteiner{
