@@ -24,7 +24,19 @@ body {
 
 
 
-  
+  .todos-os-eventos {
+    
+    position: relative;
+    font-size: 38px;
+    display: inline-block;
+    font-family: 'source sans pro', sans-serif;
+    font-weight: bold;
+    color: #000;
+    text-align: left;
+    margin-top: 5%;
+    
+    }
+    
  
 
 
@@ -71,30 +83,9 @@ body {
 .event-grid-item {
   flex: 1 0 20%;
   margin: 5px;
-}
-@media (max-width: 800px) {
-  .event-grid-item {
-    flex: 1 0 50%;
-  }
+  overflow: hidden;
 }
 
-@media (max-width: 1200px) {
-  .events-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
-  .events-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .events-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /*igor*/
 .dayCard {
@@ -113,6 +104,11 @@ body {
 
 .text-sm {
   font-size: 0.900rem;
+  white-space: nowrap;  /* Impede que o texto quebre para a próxima linha */
+  overflow: hidden;  /* Esconde qualquer texto que ultrapasse o limite do elemento */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .date-info {

@@ -23,23 +23,30 @@ const EventCard = ({ bgColor, imgSrc, imgAlt, date, title, description,id  }) =>
   const { day, month } = formatDate(date);
 
   return (
-    <Link to={`/eventpage/${id}`}>
-      <div className={`bg-${bgColor} text-white ${eventCardClasses} card`}>
-        <div className='margin-Carr'>
-          <img src={imgSrc} alt={imgAlt} className='imageClasses' />
-          <div className="p-4 flex flex-col">
-            <div className="date-info mb-2">
-              <div className="dayCard">{day}</div>
-              <div className="monthCard">{month}</div>
-            </div>
-            <div className="event-info">
-              <div className="titleCard">{title}</div>
-              <div className="text-sm">{description}</div>
+    <Link className='link-eventlist' to={`/eventpage/${id}`}>
+    <div className={`bg-${bgColor} text-white ${eventCardClasses} card`}>
+      <div className='margin-Carr'>
+        <img src={imgSrc} alt={imgAlt} className='imageClasses' />
+        <div className="p-4 flex flex-col">
+          <div className="date-info mb-2">
+            <div className="dayCard">{day}</div>
+            <div className="monthCard">{month}</div>
+          </div>
+          <div className="event-info">
+            <div className="titleCard">{title}</div>
+            <div className="text-sm">
+              {description.split('\n').map((line, index) => (
+                <span key={index}>
+                  {line}
+                  <br />
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
+  </Link>
 
   );
 };
@@ -109,6 +116,12 @@ const AllEvents = () => {
       
       <div className="container-allevents">
 
+      <div class="todos-os-eventos">Todos os Eventos</div>
+      <br></br>
+
+      <div class="proximos-eventos">Proximos Eventos</div>
+      <div class="line-div"></div>
+
         <div className="">
           <AliceCarousel
             mouseTracking
@@ -140,6 +153,8 @@ const AllEvents = () => {
 
             }}
             infinite
+            autoPlay
+            autoPlayInterval={2000}
             onResized={handleOnResize}
             renderPrevButton={() =>
               <button className="alice-carousel__prev-btn">
