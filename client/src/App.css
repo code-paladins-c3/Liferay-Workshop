@@ -100,6 +100,35 @@ code {
   top:20vh;
 }
 
+@media (max-width: 1366px) {
+  .welcomePhrase{
+    position: absolute;
+    color: #ffffff;
+    width: 40vw;
+    margin: 0 12vw;
+    margin-top: 25vh;
+  }
+  .Forgot {
+    
+    font-size: 11px;
+    left: -1.5vw;
+    top: -3vh;
+    width: 10vw; 
+    color: #4285F4;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    padding: 15px , 11px;
+   
+  }
+  #logoPosition{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 26.5vw;
+    top:20vh;
+  }
+}
 
 
 
