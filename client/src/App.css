@@ -35,7 +35,7 @@ code {
   position: absolute;
   color: #ffffff;
   width: 40vw;
-  margin: 0 17vw;
+  margin: 0 15vw;
   margin-top: 25vh;
 }
 .loginForm {
@@ -62,8 +62,9 @@ code {
 
 .buttonPlace .buttonLogin {
   position: relative;
-  left:1.5vw;
-  width: 8vw;
+  left:3vw;
+  width: 10vw;
+  top:-3vh;
   background-color: #0011A8;
   color: #FFFFFF;
   font-size: 15px;
@@ -78,8 +79,9 @@ code {
 .Forgot {
   background:none;
   position: relative;
-  left: 0vw;
-  width: 8vw; 
+  left: -1vw;
+  top: -2vh;
+  width: 10vw; 
   color: #4285F4;
   padding: 14px 20px;
   margin: 8px 0;
@@ -98,6 +100,35 @@ code {
   top:20vh;
 }
 
+@media (max-width: 1366px) {
+  .welcomePhrase{
+    position: absolute;
+    color: #ffffff;
+    width: 40vw;
+    margin: 0 12vw;
+    margin-top: 25vh;
+  }
+  .Forgot {
+    
+    font-size: 11px;
+    left: -1.5vw;
+    top: -3vh;
+    width: 10vw; 
+    color: #4285F4;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    padding: 15px , 11px;
+   
+  }
+  #logoPosition{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 26.5vw;
+    top:20vh;
+  }
+}
 
 
 
