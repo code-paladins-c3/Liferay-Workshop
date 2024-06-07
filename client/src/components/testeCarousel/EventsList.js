@@ -128,7 +128,7 @@ const EventList = () => {
         <span className='name-tag'>Filtrar por tag:&nbsp;&nbsp;&nbsp; </span>
         <Select className='select-tag' value={selectedTag} onChange={handleTagChange} options={tags} />
       </div>
-      <div className="">
+      <div className="div-carsl">
         <AliceCarousel
           mouseTracking
           keyboardNavigation
@@ -155,8 +155,12 @@ const EventList = () => {
             900: { items: 2, },
             1024: { items: 2, },
             1090: { items: 2, },
-            1920: { items: 4, },
-            2560: { items: 5, },
+            1200: { items: 2, },
+            1300: { items: 2, },
+            1400: { items: 2, },
+            1440: { items: 3, },
+            1919: { items: 4, },
+            2559: { items: 5, },
 
           }}
           infinite
